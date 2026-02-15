@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkj8s0ht1238h"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_yjn2y"]
+[ext_resource type="Texture2D" uid="uid://bv62qtfdo5012" path="res://assets/Socke.png" id="2_8fxq0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ssef"]
+radius = 5.0
+height = 15.0
+
+[node name="Player" type="RigidBody2D"]
+script = ExtResource("1_yjn2y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_3ssef")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1.71429)
+scale = Vector2(0.44898, 0.44898)
+texture = ExtResource("2_8fxq0")
+region_enabled = true
+region_rect = Rect2(9, 3, 19, 28)
