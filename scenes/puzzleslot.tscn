@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ul3vcihwmlp"]
+
+[ext_resource type="Script" path="res://PuzzleTile.gd" id="1_b6oap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sr1x"]
+size = Vector2(256, 256)
+
+[node name="PuzzleSlot" type="Node2D"]
+script = ExtResource("1_b6oap")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1sr1x")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -126.0
+offset_top = -127.0
+offset_right = 4228.0
+offset_bottom = 1235.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 500
+text = "Top right"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
