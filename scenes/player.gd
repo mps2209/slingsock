@@ -1,5 +1,5 @@
 extends RigidBody2D
-
+class_name Player
 var dragging := false
 var drag_start: Vector2
 

@@ -22,6 +22,6 @@ func _toggle_camera_target() -> void:
 	else:
 		center.remove_child(camera_2d)
 		player.add_child(camera_2d)
-		camera_2d.zoom= Vector2(3, 3)
+		camera_2d.zoom= Vector2(5, 5)
 		is_on_player=true
 

@@ -1,10 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://2ajvnh0dk80t"]
+[gd_scene load_steps=6 format=3 uid="uid://2ajvnh0dk80t"]
 
 [ext_resource type="Script" path="res://scenes/puzzle_container.gd" id="1_4uy0h"]
 [ext_resource type="PackedScene" uid="uid://c4ul3vcihwmlp" path="res://scenes/puzzleslot.tscn" id="1_v7x6a"]
+[ext_resource type="Texture2D" uid="uid://bl30tb1s50l5" path="res://assets/Pipes.png" id="2_6ka81"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qufsp"]
+texture = ExtResource("2_6ka81")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:0/0/physics_layer_0/angular_velocity = 0.0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:0/0 = 0
+9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:0/0/physics_layer_0/angular_velocity = 0.0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_t01q6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_qufsp")
 
 [node name="PuzzleContainer" type="Node2D"]
 script = ExtResource("1_4uy0h")
+
+[node name="Outer Wall" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_t01q6")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262149, 1, 0, 1310740, 131073, 0, -327660, 196609, 0, 20, 327681, 0, 65556, 327681, 0, 131092, 327681, 0, 196628, 327681, 0, 262164, 327681, 0, 327700, 327681, 0, 393236, 327681, 0, 458772, 327681, 0, 524308, 327681, 0, 589844, 327681, 0, 655380, 327681, 0, 720916, 327681, 0, 786452, 327681, 0, 851988, 327681, 0, 917524, 327681, 0, 983060, 327681, 0, 1048596, 327681, 0, 1114132, 327681, 0, 1179668, 327681, 0, 1245204, 327681, 0, 1310739, 262145, 0, 1310738, 262145, 0, 1310735, 262145, 0, 1310736, 262145, 0, 1310734, 262145, 0, 1310733, 262145, 0, 1310732, 262145, 0, 1310731, 262145, 0, 1310730, 262145, 0, 1310729, 262145, 0, 1310728, 262145, 0, 1310727, 262145, 0, 1310726, 262145, 0, 1310725, 262145, 0, 1310724, 262145, 0, 1310723, 262145, 0, 1310722, 262145, 0, 1310721, 262145, 0, 1310720, 262145, 0, 1376255, 262145, 0, 1376254, 262145, 0, 1376253, 262145, 0, 1376252, 262145, 0, 1310737, 262145, 0, 1376251, 65537, 0, 1310715, 327681, 0, 1245179, 327681, 0, 1179643, 327681, 0, 1114107, 327681, 0, 1048571, 327681, 0, 983035, 327681, 0, 917499, 327681, 0, 851963, 327681, 0, 786427, 327681, 0, 720891, 327681, 0, 655355, 327681, 0, 589819, 327681, 0, 524283, 327681, 0, 458747, 327681, 0, 393211, 327681, 0, 327675, 327681, 0, -196613, 327681, 0, -131077, 327681, 0, -65541, 327681, 0, -5, 327681, 0, 65531, 327681, 0, 131067, 327681, 0, 196603, 327681, 0, 262139, 327681, 0, -327662, 262145, 0, -327661, 262145, 0, -327663, 262145, 0, -327664, 262145, 0, -327665, 262145, 0, -327666, 262145, 0, -327667, 262145, 0, -327668, 262145, 0, -327669, 262145, 0, -327670, 262145, 0, -327671, 262145, 0, -327672, 262145, 0, -327673, 262145, 0, -327674, 262145, 0, -327675, 262145, 0, -327676, 262145, 0, -327679, 262145, 0, -262147, 262145, 0, -262148, 262145, 0, -262146, 262145, 0, -262145, 262145, 0, -327680, 262145, 0, -327678, 262145, 0, -327677, 262145, 0, -262124, 327681, 0, -196588, 327681, 0, -131052, 327681, 0, -65516, 327681, 0)
 
 [node name="Top Left" parent="." instance=ExtResource("1_v7x6a")]
 

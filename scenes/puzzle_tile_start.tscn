@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1krlqc5guide"]
+[gd_scene load_steps=7 format=3 uid="uid://cmkhwwlwant3s"]
 
 [ext_resource type="Script" path="res://scenes/puzzle_tile.gd" id="1_u0c6u"]
 [ext_resource type="Texture2D" uid="uid://bl30tb1s50l5" path="res://assets/Pipes.png" id="2_ca16e"]

@@ -71,6 +71,10 @@ func _on_slot_clicked(slot: PuzzleSlot) -> void:
 	var tile: Node2D = _get_tile_from_slot(slot)
 	if tile == null:
 		return
+	
+	if slot.player_is_on_tile or empty_slot.player_is_on_tile:
+		print("cant move tile with player in it")
+		return
 
 	# Move tile to the empty slot
 	slot.remove_child(tile)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4ul3vcihwmlp"]
 
-[ext_resource type="Script" path="res://PuzzleTile.gd" id="1_b6oap"]
+[ext_resource type="Script" path="res://scenes/puzzle_slot.gd" id="1_wprb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sr1x"]
 size = Vector2(256, 256)
 
 [node name="PuzzleSlot" type="Node2D"]
-script = ExtResource("1_b6oap")
+script = ExtResource("1_wprb0")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -22,4 +22,6 @@ scale = Vector2(0.05, 0.05)
 theme_override_font_sizes/font_size = 500
 text = "Top right"
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
