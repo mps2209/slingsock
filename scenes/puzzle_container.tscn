@@ -1,34 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://2ajvnh0dk80t"]
+[gd_scene format=3 uid="uid://2ajvnh0dk80t"]
 
-[ext_resource type="Script" path="res://scenes/puzzle_container.gd" id="1_4uy0h"]
+[ext_resource type="Script" uid="uid://dmn7kfhlfrst7" path="res://scenes/puzzle_container.gd" id="1_4uy0h"]
 [ext_resource type="PackedScene" uid="uid://c4ul3vcihwmlp" path="res://scenes/puzzleslot.tscn" id="1_v7x6a"]
 
-[node name="PuzzleContainer" type="Node2D"]
+[node name="PuzzleContainer" type="Node2D" unique_id=1617017049]
 script = ExtResource("1_4uy0h")
 
-[node name="Top Left" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Top Left" parent="." unique_id=556575004 instance=ExtResource("1_v7x6a")]
+puzzle_tile_name = "Level1/Level1_7"
 
-[node name="Top Middle" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Top Middle" parent="." unique_id=527141240 instance=ExtResource("1_v7x6a")]
 position = Vector2(256, 0)
-
-[node name="Top Right" parent="." instance=ExtResource("1_v7x6a")]
-position = Vector2(512, 0)
 is_empty = true
 
-[node name="Middle Left" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Top Right" parent="." unique_id=1100691446 instance=ExtResource("1_v7x6a")]
+position = Vector2(512, 0)
+puzzle_tile_name = "Level1/Level1_8"
+
+[node name="Middle Left" parent="." unique_id=1300324132 instance=ExtResource("1_v7x6a")]
 position = Vector2(0, 256)
+puzzle_tile_name = "Level1/Level1_4"
 
-[node name="Middle" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Middle" parent="." unique_id=636310817 instance=ExtResource("1_v7x6a")]
 position = Vector2(256, 256)
+puzzle_tile_name = "Level1/Level1_5"
 
-[node name="Middle Right" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Middle Right" parent="." unique_id=366575141 instance=ExtResource("1_v7x6a")]
 position = Vector2(512, 256)
+puzzle_tile_name = "Level1/Level1_6"
 
-[node name="Bottom Left" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Bottom Left" parent="." unique_id=1317459907 instance=ExtResource("1_v7x6a")]
 position = Vector2(0, 512)
+puzzle_tile_name = "Level1/Level1_1"
 
-[node name="Bottom Middle" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Bottom Middle" parent="." unique_id=1629199492 instance=ExtResource("1_v7x6a")]
 position = Vector2(256, 512)
+puzzle_tile_name = "Level1/Level1_2"
 
-[node name="Bottom Right" parent="." instance=ExtResource("1_v7x6a")]
+[node name="Bottom Right" parent="." unique_id=2067342589 instance=ExtResource("1_v7x6a")]
 position = Vector2(512, 512)
+puzzle_tile_name = "Level1/Level1_3"

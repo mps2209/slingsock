@@ -3,8 +3,8 @@ extends RigidBody2D
 var dragging := false
 var drag_start: Vector2
 
-@export var base_power: float = 1.0        # overall strength multiplier
-@export var max_power: float = 800.0      # hard cap so it doesn't go insane
+@export var base_power: float = 1        # overall strength multiplier
+@export var max_power: float = 500.0      # hard cap so it doesn't go insane
 
 func _ready() -> void:
 	input_pickable = true  # detect the initial click on this body
