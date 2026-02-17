@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d08ylwlndel7w"]
+[gd_scene format=3 uid="uid://d08ylwlndel7w"]
 
 [ext_resource type="PackedScene" uid="uid://dkj8s0ht1238h" path="res://scenes/player.tscn" id="1_g60tx"]
-[ext_resource type="PackedScene" uid="uid://2ajvnh0dk80t" path="res://scenes/puzzle_container.tscn" id="1_iik06"]
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_vbkcy"]
+[ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_vbkcy"]
+[ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="3_sugp2"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_vbkcy")
 
-[node name="PuzzleContainer" parent="." instance=ExtResource("1_iik06")]
-
-[node name="Player" parent="." instance=ExtResource("1_g60tx")]
-position = Vector2(-2, 517)
-max_power = 550.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(5, 5)
-
-[node name="Center" type="Node2D" parent="."]
+[node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
+
+[node name="Washing Machine" parent="." unique_id=657335385 instance=ExtResource("3_sugp2")]
+
+[node name="Player" parent="." unique_id=1827484345 instance=ExtResource("1_g60tx")]
+position = Vector2(-238, -231)
+continuous_cd = 1
+max_power = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=372067963]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true

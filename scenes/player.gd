@@ -1,41 +1,67 @@
 extends RigidBody2D
 class_name Player
+
 var dragging := false
 var drag_start: Vector2
+var pending_impulse: Vector2 = Vector2.ZERO
 
-@export var base_power: float = 1.0        # overall strength multiplier
-@export var max_power: float = 500.0      # hard cap so it doesn't go insane
-@export var max_stretch_scale: float = 1.6  # how long the sock can get visually
-@export var min_stretch_scale: float = 0.382  # normal length
+@export var base_power: float = 1.0
+@export var max_power: float = 500.0
+@export var max_stretch_scale: float = 1.6
+@export var min_stretch_scale: float = 0.382
+@export var flying_velocity_threshold: float = 50.0
+@export var stopped_velocity_threshold: float = 5.0  # When player is considered "stopped"
+
 @onready var stretched_sock: Sprite2D = $"Stretched Sock"
 @onready var normal_sock: Sprite2D = $"Normal Sock"
-@export var flying_velocity_threshold: float = 50.0  # velocity threshold to switch to flying sprite
-var flyingSockArea=Rect2(107,0,9,25)
-var normalSockArea=Rect2(9,3,19,28)
+
+var flyingSockArea = Rect2(107, 0, 9, 25)
+var normalSockArea = Rect2(9, 3, 19, 28)
 var is_flying := false
+var is_moving := false
+var is_dead := false
+var spawn: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
-	input_pickable = true  # detect the initial click on this body
+	spawn = global_position
+	input_pickable = true
+
 func _physics_process(delta: float) -> void:
-	if not dragging:
+	update_movement_state()
+	
+	if not is_moving:
 		update_sock_sprite()
+
+	# Apply impulse collected from input, then clear
+	if pending_impulse != Vector2.ZERO:
+		apply_impulse(pending_impulse)
+		pending_impulse = Vector2.ZERO
+		is_moving = true
+
+func update_movement_state() -> void:
+	var speed = linear_velocity.length()
+	is_moving = speed > stopped_velocity_threshold
+
 func update_sock_sprite() -> void:
 	var speed = linear_velocity.length()
-	
 	if speed > flying_velocity_threshold and not is_flying:
-		# Switch to flying sock
 		is_flying = true
 		normal_sock.region_rect = flyingSockArea
 	elif speed <= flying_velocity_threshold and is_flying:
-		# Switch back to normal sock
 		is_flying = false
 		normal_sock.region_rect = normalSockArea
+
 func _input_event(viewport, event, shape_idx) -> void:
+	# Only allow input when player is stopped
+	if is_moving:
+		return
+		
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
 		dragging = true
 		drag_start = get_global_mouse_position()
-		
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not dragging:
 		return
@@ -48,7 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var target_global_angle: float = dir.angle()
 	var BOTTOM_OFFSET := -PI/2
 	stretched_sock.rotation = (target_global_angle + BOTTOM_OFFSET) - global_rotation
-	# Drag vector in global space
+
 	var drag_vector: Vector2 = drag_start - mouse_pos
 	var drag_dist: float = drag_vector.length()
 
@@ -63,17 +89,30 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		var dist: float = drag_vector.length()
 		if dist == 0.0:
-			stretched_sock.scale.y = min_stretch_scale
-			stretched_sock.visible = false
-			normal_sock.visible = true
+			reset_stretched_sock()
 			return
 
 		var dragdir: Vector2 = drag_vector / dist
 		var scaled_len := base_power * dist
 		scaled_len = clamp(scaled_len, 0.0, max_power)
-		var impulse: Vector2 = dragdir * scaled_len
+		pending_impulse = dragdir * scaled_len
 
-		stretched_sock.scale.y = min_stretch_scale
-		stretched_sock.visible = false
-		normal_sock.visible = true
-		apply_impulse(impulse)
+		reset_stretched_sock()
+
+func reset_stretched_sock() -> void:
+	stretched_sock.scale.y = min_stretch_scale
+	stretched_sock.visible = false
+	normal_sock.visible = true
+
+func die() -> void:
+	print("you died")
+	is_dead=true
+
+func _integrate_forces(state):
+	if is_dead:
+		# Reset position and rotation
+		state.transform = Transform2D(0.0, spawn)
+		# Reset linear and angular velocity to stop movement
+		state.linear_velocity = Vector2.ZERO
+		state.angular_velocity = 0.0
+		is_dead = false

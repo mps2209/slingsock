@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://56eome0q6m3k"]
 
-[ext_resource type="Script" uid="uid://dqlpe0qnc02yi" path="res://scenes/puzzle_tile.gd" id="1_8as00"]
+[ext_resource type="Script" uid="uid://bwcegpng3scup" path="res://scenes/puzzle_tile.gd" id="1_8as00"]
 [ext_resource type="Texture2D" uid="uid://bl30tb1s50l5" path="res://assets/Pipes.png" id="2_np40t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53y8d"]

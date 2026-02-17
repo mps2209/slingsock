@@ -3,16 +3,25 @@
 [ext_resource type="Script" uid="uid://tgl1tflhoypx" path="res://scenes/player.gd" id="1_yjn2y"]
 [ext_resource type="Texture2D" uid="uid://bv62qtfdo5012" path="res://assets/Socke.png" id="2_8fxq0"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
+bounce = 0.25
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ssef"]
 radius = 3.0
-height = 12.0
+height = 14.0
 
 [node name="Player" type="RigidBody2D" unique_id=213904822]
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_g2els")
+gravity_scale = 0.25
+continuous_cd = 2
 script = ExtResource("1_yjn2y")
-base_power = 5.0
+base_power = 0.5
+max_power = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777288890]
-position = Vector2(0, -3)
+position = Vector2(1, -3)
+rotation = 0.28274333
 shape = SubResource("CapsuleShape2D_3ssef")
 
 [node name="Stretched Sock" type="Sprite2D" parent="." unique_id=1052632296]
@@ -31,4 +40,4 @@ scale = Vector2(0.381579, 0.381579)
 texture = ExtResource("2_8fxq0")
 offset = Vector2(-4.5, 0)
 region_enabled = true
-region_rect = Rect2(9, 3, 19, 28)
+region_rect = Rect2(7, 0, 22, 32)
