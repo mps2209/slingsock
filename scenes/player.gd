@@ -20,6 +20,7 @@ var normalSockArea = Rect2(9, 3, 19, 28)
 var is_flying := false
 var is_moving := false
 var is_dead := false
+signal died
 var spawn: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -63,6 +64,8 @@ func _input_event(viewport, event, shape_idx) -> void:
 		drag_start = get_global_mouse_position()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_dead:
+		return
 	if not dragging:
 		return
 
@@ -106,13 +109,17 @@ func reset_stretched_sock() -> void:
 
 func die() -> void:
 	print("you died")
+	if !is_dead:
+		died.emit()
 	is_dead=true
+	
 
-func _integrate_forces(state):
-	if is_dead:
-		# Reset position and rotation
-		state.transform = Transform2D(0.0, spawn)
-		# Reset linear and angular velocity to stop movement
-		state.linear_velocity = Vector2.ZERO
-		state.angular_velocity = 0.0
-		is_dead = false
+
+
+
+func _on_you_died_you_died_played() -> void:
+	is_dead = false
+	is_moving = false  # Also reset movement state	position=spawn
+	linear_velocity = Vector2.ZERO  # Explicitly reset velocities during respawn
+	angular_velocity = 0.0
+	position=spawn

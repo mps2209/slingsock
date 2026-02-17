@@ -150,23 +150,17 @@ shape = SubResource("WorldBoundaryShape2D_1vf26")
 [node name="Spikes" type="Node2D" parent="." unique_id=389011136]
 position = Vector2(-210, -200)
 
-[node name="Spike3" parent="Spikes" unique_id=529955461 instance=ExtResource("2_jykwp")]
-position = Vector2(207, 508)
-
-[node name="Spike5" parent="Spikes" unique_id=1519518268 instance=ExtResource("2_jykwp")]
-position = Vector2(273, 508)
-
 [node name="Spike6" parent="Spikes" unique_id=121276990 instance=ExtResource("2_jykwp")]
-position = Vector2(306, 508)
+position = Vector2(273, 506)
 
 [node name="Spike4" parent="Spikes" unique_id=1451074269 instance=ExtResource("2_jykwp")]
-position = Vector2(240, 508)
+position = Vector2(207, 506)
 
 [node name="Spike" parent="Spikes" unique_id=1041615804 instance=ExtResource("2_jykwp")]
-position = Vector2(141, 508)
+position = Vector2(141, 506)
 
-[node name="Spike2" parent="Spikes" unique_id=472058840 instance=ExtResource("2_jykwp")]
-position = Vector2(174, 508)
+[node name="Spike2" parent="Spikes" unique_id=529955461 instance=ExtResource("2_jykwp")]
+position = Vector2(213, 24)
 
 [node name="Spawn" type="Node2D" parent="." unique_id=1514814327]
 position = Vector2(-203, -228)

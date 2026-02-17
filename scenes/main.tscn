@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkj8s0ht1238h" path="res://scenes/player.tscn" id="1_g60tx"]
 [ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_vbkcy"]
 [ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_vbkcy")
@@ -11,12 +12,26 @@ script = ExtResource("1_vbkcy")
 position = Vector2(237, 245)
 
 [node name="Washing Machine" parent="." unique_id=657335385 instance=ExtResource("3_sugp2")]
+scale = Vector2(5, 5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
+position = Vector2(-1410, -1159)
+position_smoothing_enabled = true
+
+[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jyhfs")]
+visible = false
+position = Vector2(0, 0)
 
 [node name="Player" parent="." unique_id=1827484345 instance=ExtResource("1_g60tx")]
-position = Vector2(-238, -231)
+position = Vector2(-1410, -1159)
+gravity_scale = 0.5
 continuous_cd = 1
-max_power = 500.0
+max_power = 150.0
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=372067963]
-zoom = Vector2(5, 5)
-position_smoothing_enabled = true
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1522498002]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[connection signal="you_died_played" from="Camera2D/YouDied" to="Player" method="_on_you_died_you_died_played"]
+[connection signal="died" from="Player" to="Camera2D/YouDied" method="_on_player_died"]
