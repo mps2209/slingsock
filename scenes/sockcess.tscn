@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://v6fs14gt1j0s"]
+
+[ext_resource type="Script" uid="uid://kxfjfdbscr18" path="res://scenes/sockcess.gd" id="1_ehymr"]
+[ext_resource type="FontFile" uid="uid://b8a0pu8dppa7x" path="res://assets/fonts/OptimusPrinceps.ttf" id="1_ijfg8"]
+
+[sub_resource type="Gradient" id="Gradient_ijfg8"]
+offsets = PackedFloat32Array(0, 0.21987315, 0.85729384, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ehymr"]
+gradient = SubResource("Gradient_ijfg8")
+fill_from = Vector2(0.55840456, 1)
+fill_to = Vector2(0.5669516, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijfg8"]
+font = ExtResource("1_ijfg8")
+font_size = 262
+font_color = Color(0.8666667, 0.5019608, 0.21176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehymr"]
+font = ExtResource("1_ijfg8")
+font_size = 262
+font_color = Color(0.8666667, 0.5019608, 0.21176471, 1)
+outline_color = Color(0.4862745, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.8666667, 0.5019608, 0.21176471, 0)
+shadow_offset = Vector2(-20, 1)
+
+[sub_resource type="Animation" id="Animation_ehymr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shadow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, 210)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ijfg8"]
+resource_name = "sockcess"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shadow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2),
+"transitions": PackedFloat32Array(0.34151047, 1, 1.9318728, 1),
+"update": 0,
+"values": [Vector2(-49, 210), Vector2(-15, 210), Vector2(-15, 210), Vector2(17, 210)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehymr"]
+_data = {
+&"RESET": SubResource("Animation_ehymr"),
+&"sockcess": SubResource("Animation_ijfg8")
+}
+
+[node name="Sockcess" type="Node2D" unique_id=1863315230]
+script = ExtResource("1_ehymr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=575980567]
+position = Vector2(650.5, 345.00003)
+scale = Vector2(44.015625, 3.9062502)
+texture = SubResource("GradientTexture2D_ehymr")
+
+[node name="Shadow" type="Node2D" parent="." unique_id=2103288851]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-15, 210)
+
+[node name="Label" type="Label" parent="Shadow" unique_id=778255704]
+offset_left = 112.0
+offset_top = -3.0
+offset_right = 1067.0
+offset_bottom = 276.0
+text = "Sockcess"
+label_settings = SubResource("LabelSettings_ijfg8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sockcess Text" type="Label" parent="." unique_id=1593985378]
+offset_left = -5.0
+offset_top = 200.0
+offset_right = 1155.0
+offset_bottom = 494.0
+pivot_offset = Vector2(73.99, 21.975)
+text = "Sockcess"
+label_settings = SubResource("LabelSettings_ehymr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1292660853]
+libraries/ = SubResource("AnimationLibrary_ehymr")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

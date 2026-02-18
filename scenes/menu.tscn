@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c5syow6phfxlt"]
+
+[ext_resource type="Script" uid="uid://bv7gy765obwy0" path="res://scenes/menu.gd" id="1_yqeox"]
+
+[node name="Menu" type="Node2D" unique_id=1766038176]
+script = ExtResource("1_yqeox")
+
+[node name="Menu Manager" type="Node" parent="." unique_id=369320379]
+
+[node name="Resume" type="Button" parent="Menu Manager" unique_id=1602104556]
+offset_left = 492.0
+offset_top = 317.0
+offset_right = 542.0
+offset_bottom = 350.0
+text = "Resume"
+
+[node name="Quit" type="Button" parent="Menu Manager" unique_id=1569793824]
+offset_left = 492.0
+offset_top = 353.0
+offset_right = 562.0
+offset_bottom = 386.0
+text = "Quit"
+
+[connection signal="pressed" from="Menu Manager/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu Manager/Quit" to="." method="_on_quit_pressed"]

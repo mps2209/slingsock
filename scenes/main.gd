@@ -3,14 +3,11 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var player: Node2D = $Player
 @onready var center: Node2D = $Center
+@onready var menu: Menu = $Menu
 
 var is_on_center := false
 var camera_tween: Tween
 var is_on_player=true;
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SPACE:
-		print("space pressed")
-		_toggle_camera_target()
 
 func _toggle_camera_target() -> void:
 	print("toggle camera")
@@ -24,3 +21,7 @@ func _toggle_camera_target() -> void:
 		player.add_child(camera_2d)
 		camera_2d.zoom= Vector2(5, 5)
 		is_on_player=true
+
+
+func _on_sockcess_animation_done() -> void:
+	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")

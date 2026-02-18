@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_vbkcy"]
 [ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_vbkcy")
@@ -14,24 +17,46 @@ position = Vector2(237, 245)
 [node name="Washing Machine" parent="." unique_id=657335385 instance=ExtResource("3_sugp2")]
 scale = Vector2(5, 5)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
-position = Vector2(-1410, -1159)
-position_smoothing_enabled = true
-
-[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jyhfs")]
-visible = false
-position = Vector2(0, 0)
+[node name="Exit" parent="." unique_id=410037114 instance=ExtResource("5_o6xl0")]
+position = Vector2(1417, 482)
+scale = Vector2(4.9999804, 4.9999804)
 
 [node name="Player" parent="." unique_id=1827484345 instance=ExtResource("1_g60tx")]
-position = Vector2(-1410, -1159)
-gravity_scale = 0.5
+position = Vector2(-1359, -1181)
+gravity_scale = 1.0
 continuous_cd = 1
-max_power = 150.0
+max_power = 1250.0
+max_drag_distance = 1200.0
+mind_drag_distance = 400.0
+min_velocity_for_flap = 250.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1522498002]
 remote_path = NodePath("../../Camera2D")
 update_rotation = false
 update_scale = false
 
-[connection signal="you_died_played" from="Camera2D/YouDied" to="Player" method="_on_you_died_you_died_played"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
+position = Vector2(-1359, -1181)
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+
+[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jyhfs")]
+visible = false
+position = Vector2(0, 0)
+
+[node name="Sockcess" parent="Camera2D" unique_id=1863315230 instance=ExtResource("4_tefeu")]
+visible = false
+position = Vector2(-588, -366)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1886666360]
+
+[node name="Node" type="Node" parent="CanvasLayer" unique_id=1161820637]
+process_mode = 3
+
+[node name="Menu" parent="CanvasLayer/Node" unique_id=1766038176 instance=ExtResource("5_tbgi4")]
+position = Vector2(1922, 1287)
+
+[connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
 [connection signal="died" from="Player" to="Camera2D/YouDied" method="_on_player_died"]
+[connection signal="you_died_played" from="Camera2D/YouDied" to="Player" method="_on_you_died_you_died_played"]
+[connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://01j64legloym"]
+
+[ext_resource type="Script" uid="uid://bv6c03akxvqkq" path="res://scenes/start_screen.gd" id="1_tx5wa"]
+
+[node name="Start Screen" type="Node2D" unique_id=2096571283]
+script = ExtResource("1_tx5wa")
+
+[node name="Button Manager" type="Node" parent="." unique_id=1596647026]
+
+[node name="Start" type="Button" parent="Button Manager" unique_id=963397099]
+offset_left = 492.0
+offset_top = 317.0
+offset_right = 542.0
+offset_bottom = 350.0
+text = "Start"
+
+[node name="Exit" type="Button" parent="Button Manager" unique_id=336079495]
+offset_left = 492.0
+offset_top = 353.0
+offset_right = 542.0
+offset_bottom = 386.0
+text = "Exit"
+
+[connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button Manager/Exit" to="." method="_on_exit_pressed"]
