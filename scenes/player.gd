@@ -14,6 +14,7 @@ var pause_sling_audio := 1.7
 @export var max_drag_distance: float = 200.0
 @export var mind_drag_distance:float= 100.0
 @export var min_velocity_for_flap:float= 100.0
+@export var is_sticky=true
 
 @onready var stretched_sock: Sprite2D = $"Stretched Sock"
 @onready var normal_sock: Sprite2D = $"Normal Sock"
@@ -22,6 +23,7 @@ var pause_sling_audio := 1.7
 @onready var soft_impact: AudioStreamPlayer2D = $SoftImpact
 @onready var level_1: AudioStreamPlayer2D = $Level1
 @onready var level_2: AudioStreamPlayer2D = $Level2
+@onready var sticky_impact: AudioStreamPlayer2D = $StickyImpact
 
 var is_playing_impact_sound=false
 
@@ -112,6 +114,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	stretched_sock.scale.y = stretch
 
 	if Input.is_action_just_released("drag"):
+		gravity_scale=1
 		dragging = false
 		released = true          # mark that we DID release during this drag
 
@@ -157,13 +160,19 @@ func on_you_died_you_died_played() -> void:
 func _on_body_entered(body: Node) -> void:
 	if !is_playing_impact_sound:
 		if linear_velocity.length()>min_velocity_for_flap:
-			impact.play(0)
+			if is_sticky:
+				sticky_impact.play(0.5)
+			else:
+				impact.play(0)
 			is_playing_impact_sound=true
 		else:
 			pass
 			#soft_impact.play(0)
 			#is_playing_impact_sound=true
-
+	if is_sticky:
+		gravity_scale=0
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0.0
 
 func _on_impact_finished() -> void:
 	await get_tree().create_timer(.5).timeout
@@ -182,3 +191,7 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 func _on_level_2_finished() -> void:
 	level_2.play(0)
+
+
+func _on_sticky_impact_finished() -> void:
+	_on_impact_finished()

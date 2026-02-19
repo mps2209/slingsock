@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d274ov5scccn5" path="res://sounds/778512__blondpanda__denim_and_cloth_step_foley_10.wav" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://c0eq14kssxho8" path="res://sounds/Level1.wav" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://b773nlearpbbs" path="res://sounds/Level2.wav" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://b75mtpuwi07a0" path="res://sounds/570787__afonsosantos00__slap.wav" id="8_smehm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 bounce = 0.25
@@ -24,6 +25,7 @@ script = ExtResource("1_yjn2y")
 max_power = 400.0
 max_stretch_scale = 10.0
 min_stretch_scale = 1.0
+is_sticky = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777288890]
 position = Vector2(13, -26)
@@ -64,12 +66,18 @@ pitch_scale = 0.78
 
 [node name="Level1" type="AudioStreamPlayer2D" parent="." unique_id=390036345]
 stream = ExtResource("6_tuyoq")
+volume_db = -5.0
 
 [node name="Level2" type="AudioStreamPlayer2D" parent="." unique_id=133179291]
 stream = ExtResource("7_fjrip")
+
+[node name="StickyImpact" type="AudioStreamPlayer2D" parent="." unique_id=555055098]
+stream = ExtResource("8_smehm")
+volume_db = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="Impact" to="." method="_on_impact_finished"]
 [connection signal="finished" from="SoftImpact" to="." method="_on_soft_impact_finished"]
 [connection signal="finished" from="Level1" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="finished" from="Level2" to="." method="_on_level_2_finished"]
+[connection signal="finished" from="StickyImpact" to="." method="_on_sticky_impact_finished"]
