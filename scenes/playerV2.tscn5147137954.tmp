@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://db7cwx123ahhp"]
+
+[ext_resource type="Script" uid="uid://tgl1tflhoypx" path="res://scenes/player.gd" id="1_g6axd"]
+[ext_resource type="Texture2D" uid="uid://bv62qtfdo5012" path="res://assets/Socke.png" id="2_alui2"]
+[ext_resource type="AudioStream" uid="uid://dlqncyh0a88at" path="res://sounds/513934__olver__slingshot-1.wav" id="3_bvy67"]
+[ext_resource type="AudioStream" uid="uid://o1134xrc762n" path="res://sounds/670100__mikefozzy98__cloth-footstep-5.wav" id="4_0u6bw"]
+[ext_resource type="AudioStream" uid="uid://d274ov5scccn5" path="res://sounds/778512__blondpanda__denim_and_cloth_step_foley_10.wav" id="5_d8h5u"]
+[ext_resource type="AudioStream" uid="uid://c0eq14kssxho8" path="res://sounds/Level1.wav" id="6_7ixdr"]
+[ext_resource type="AudioStream" uid="uid://b773nlearpbbs" path="res://sounds/Level2.wav" id="7_wfrus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6axd"]
+radius = 10.994948
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alui2"]
+radius = 16.03122
+
+[node name="Player" type="Area2D" unique_id=1433354313]
+script = ExtResource("1_g6axd")
+base_power = null
+max_power = 400.0
+max_stretch_scale = 10.0
+min_stretch_scale = 1.0
+flying_velocity_threshold = null
+stopped_velocity_threshold = null
+max_drag_distance = null
+mind_drag_distance = null
+min_velocity_for_flap = null
+
+[node name="Back" type="RigidBody2D" parent="." unique_id=1935701371]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back" unique_id=777288890]
+rotation = 0.28274333
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_g6axd")
+
+[node name="Stretched Sock" type="Sprite2D" parent="Back" unique_id=1052632296]
+visible = false
+position = Vector2(14.000002, -26.000002)
+scale = Vector2(3.75, 3.75)
+texture = ExtResource("2_alui2")
+centered = false
+offset = Vector2(-4.5, 0)
+region_enabled = true
+region_rect = Rect2(75, 0, 9, 32)
+
+[node name="Normal Sock" type="Sprite2D" parent="Back" unique_id=615963766]
+position = Vector2(23.312496, -25)
+scale = Vector2(2.8749998, 2.875)
+texture = ExtResource("2_alui2")
+offset = Vector2(-4.5, 0)
+region_enabled = true
+region_rect = Rect2(7, 0, 22, 32)
+
+[node name="Slingshot" type="AudioStreamPlayer2D" parent="Back" unique_id=468016252]
+stream = ExtResource("3_bvy67")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="Back" unique_id=723338945]
+stream = ExtResource("4_0u6bw")
+
+[node name="SoftImpact" type="AudioStreamPlayer2D" parent="Back" unique_id=2091040189]
+stream = ExtResource("5_d8h5u")
+volume_db = -5.0
+pitch_scale = 0.78
+
+[node name="Level1" type="AudioStreamPlayer2D" parent="Back" unique_id=390036345]
+stream = ExtResource("6_7ixdr")
+
+[node name="Level2" type="AudioStreamPlayer2D" parent="Back" unique_id=133179291]
+stream = ExtResource("7_wfrus")
+
+[node name="Front" type="RigidBody2D" parent="." unique_id=1189497663]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Front" unique_id=1766852522]
+position = Vector2(22, -55)
+shape = SubResource("CircleShape2D_alui2")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="." unique_id=275489198]
+node_a = NodePath("../Back")
+node_b = NodePath("../Front")
+
+[connection signal="body_entered" from="Back" to="." method="_on_back_body_entered"]
+[connection signal="finished" from="Back/Impact" to="." method="_on_impact_finished"]
+[connection signal="finished" from="Back/SoftImpact" to="." method="_on_soft_impact_finished"]
+[connection signal="finished" from="Back/Level1" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Back/Level2" to="." method="_on_level_2_finished"]
+[connection signal="body_entered" from="Front" to="." method="_on_front_body_entered"]
