@@ -183,7 +183,7 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ex8a5")
 
-[node name="Washing Machine" type="Node2D" unique_id=657335385]
+[node name="Sewers" type="Node2D" unique_id=657335385]
 
 [node name="Spawn" type="Node2D" parent="." unique_id=1514814327]
 position = Vector2(-203, -228)
