@@ -15,11 +15,11 @@ height = 69.5994
 
 [node name="Player" type="RigidBody2D" unique_id=213904822]
 physics_material_override = SubResource("PhysicsMaterial_g2els")
-gravity_scale = 0.25
 continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 20
 script = ExtResource("1_yjn2y")
+max_power = 400.0
 max_stretch_scale = 10.0
 min_stretch_scale = 1.0
 

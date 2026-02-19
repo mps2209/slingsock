@@ -116,7 +116,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		var dragdir: Vector2 = drag_vector / dist
 		var t_power = clamp(dist / max_drag_distance, 0.0, 1.0)
-		var scaled_len = lerp(0.0, max_power, t_power) * base_power
+		var scaled_len = pow(lerp(0.0, max_power, t_power),1.2) * base_power
 		pending_impulse = dragdir * scaled_len
 
 		reset_stretched_sock()
@@ -138,7 +138,7 @@ func die() -> void:
 		died.emit()
 	is_dead = true
 
-func _on_you_died_you_died_played() -> void:
+func on_you_died_you_died_played() -> void:
 	is_dead = false
 	is_moving = false
 	position = spawn
