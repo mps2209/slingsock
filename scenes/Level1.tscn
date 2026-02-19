@@ -65,7 +65,7 @@ _data = {
 script = ExtResource("1_n34uq")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
-position = Vector2(-1359, -1181)
+position = Vector2(-1350, -1191)
 remote_path = NodePath("../Camera2D")
 update_position = false
 update_rotation = false

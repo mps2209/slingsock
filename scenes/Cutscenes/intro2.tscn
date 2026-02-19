@@ -11,6 +11,34 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_rbse2")
 
 [sub_resource type="Animation" id="Animation_rm3dj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r334y"]
+resource_name = "intro2"
 length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,26 +59,10 @@ tracks/1/path = NodePath("Sprite2D/RichTextLabel:visible_ratio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1.5, 2, 3.5, 4.5, 5.5),
+"times": PackedFloat32Array(0, 1, 1.5, 3, 4, 5),
 "transitions": PackedFloat32Array(1.0352651, 0.9999983, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.257, 0.257, 0.632, 0.632, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_r334y"]
-resource_name = "intro2"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rm3dj"]
