@@ -7,8 +7,8 @@
 [ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="5_fckx4"]
 
 [sub_resource type="Gradient" id="Gradient_1vf26"]
-offsets = PackedFloat32Array(0, 0.8803047, 0.91838956, 1)
-colors = PackedColorArray(0.38039216, 0.5764706, 1, 0, 1, 1, 1, 0.4509804, 0.78039217, 1, 1, 0.40392157, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.88414633, 0.9375, 1)
+colors = PackedColorArray(0.38039216, 0.5764706, 1, 0.40784314, 0.78039217, 1, 1, 0.80784315, 1, 1, 1, 0.42352942, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fckx4"]
 gradient = SubResource("Gradient_1vf26")

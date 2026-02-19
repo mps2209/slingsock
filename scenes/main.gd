@@ -11,7 +11,7 @@ func _ready() -> void:
 	animation_player.play("intro")
 
 func _on_sockcess_animation_done() -> void:
-	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/Cutscenes/intro2.tscn")
 func spawn_player():
 	var scene = preload("res://scenes/player.tscn")
 	var instance = scene.instantiate()

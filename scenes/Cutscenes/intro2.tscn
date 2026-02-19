@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bbw27wj6m5hj4"]
+
+[ext_resource type="Texture2D" uid="uid://biwg01dlvcew6" path="res://Screens/onetotwo.png" id="1_r334y"]
+[ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="2_rm3dj"]
+
+[sub_resource type="Gradient" id="Gradient_rbse2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r334y"]
+gradient = SubResource("Gradient_rbse2")
+
+[sub_resource type="Animation" id="Animation_rm3dj"]
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2, 3.5, 4.5, 5.5),
+"transitions": PackedFloat32Array(1.0352651, 0.9999983, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.257, 0.257, 0.632, 0.632, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_r334y"]
+resource_name = "intro2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rm3dj"]
+_data = {
+&"RESET": SubResource("Animation_rm3dj"),
+&"intro2": SubResource("Animation_r334y")
+}
+
+[node name="Intro2" type="Node2D" unique_id=774938150]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=594976478]
+position = Vector2(527, 356)
+scale = Vector2(27.71953, 15.173691)
+texture = SubResource("GradientTexture2D_r334y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1620324559]
+modulate = Color(0, 0, 0, 0)
+scale = Vector2(2.4074073, 2.4074075)
+texture = ExtResource("1_r334y")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D" unique_id=2130453264]
+offset_left = 22.430769
+offset_top = 34.47692
+offset_right = 245.9077
+offset_bottom = 125.446144
+theme_override_fonts/normal_font = ExtResource("2_rm3dj")
+theme_override_font_sizes/normal_font_size = 12
+text = "This must be the Sewers. 
+I have to find my way out of here... I am used to some smells, but this..."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=48886781]
+libraries/ = SubResource("AnimationLibrary_rm3dj")
