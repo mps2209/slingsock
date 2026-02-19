@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8nlqhwwgvup6" path="res://assets/Spikes.png" id="1_ljd5v"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7a7y0"]
-points = PackedVector2Array(3, -30, -3, -7, 0, 0, 62, 0, 65, -13, 59, -29, 44, -29, 29, -20, 23, -28, 12, -28)
+points = PackedVector2Array(1, -28, -3, -7, 0, 0, 20, 0, 31, 0, 31, -10, 31, -16, 29, -28, 23, -29, 12, -30)
 
 [node name="Spike" type="Node2D" unique_id=529955461]
 script = ExtResource("1_7a7y0")
@@ -13,6 +13,12 @@ script = ExtResource("1_7a7y0")
 texture = ExtResource("1_ljd5v")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=398635663]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=470919130]
+position = Vector2(31, 16)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+shape = SubResource("ConvexPolygonShape2D_7a7y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=771216041]
 position = Vector2(-31, 16)

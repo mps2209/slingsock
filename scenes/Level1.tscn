@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d08ylwlndel7w"]
 
-[ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_vbkcy"]
-[ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="4_tefeu"]
-[ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="5_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="8_tipki"]
-[ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="9_choun"]
-[ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="10_ya4ey"]
+[ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_n34uq"]
+[ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="2_kbo48"]
+[ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="3_4dyl1"]
+[ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jxjwb"]
+[ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="5_2meft"]
+[ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="6_0xqs2"]
+[ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="7_ipmer"]
+[ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="8_av1gt"]
+[ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_r7dij"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1359, -1181)]
+"values": [Vector2(1424, 469)]
 }
 
 [sub_resource type="Animation" id="Animation_choun"]
@@ -62,7 +62,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D" unique_id=1038294997]
-script = ExtResource("1_vbkcy")
+script = ExtResource("1_n34uq")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
 position = Vector2(-1359, -1181)
@@ -74,23 +74,23 @@ update_scale = false
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
 
-[node name="Washing Machine" parent="." unique_id=657335385 instance=ExtResource("3_sugp2")]
+[node name="Washing Machine" parent="." unique_id=657335385 instance=ExtResource("2_kbo48")]
 scale = Vector2(5, 5)
 
-[node name="Exit" parent="." unique_id=410037114 instance=ExtResource("5_o6xl0")]
-position = Vector2(1417, 482)
-scale = Vector2(4.9999804, 4.9999804)
+[node name="Exit" parent="." unique_id=410037114 instance=ExtResource("3_4dyl1")]
+position = Vector2(1405.9998, 480.00003)
+scale = Vector2(5.639971, 5.639971)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
-position = Vector2(-1359, -1181)
+position = Vector2(1424, 469)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
-[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jyhfs")]
+[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jxjwb")]
 visible = false
 position = Vector2(0, 0)
 
-[node name="Sockcess" parent="Camera2D" unique_id=1863315230 instance=ExtResource("4_tefeu")]
+[node name="Sockcess" parent="Camera2D" unique_id=1863315230 instance=ExtResource("5_2meft")]
 visible = false
 position = Vector2(-588, -366)
 
@@ -99,7 +99,7 @@ position = Vector2(-588, -366)
 [node name="Node" type="Node" parent="CanvasLayer" unique_id=1161820637]
 process_mode = 3
 
-[node name="Menu" parent="CanvasLayer/Node" unique_id=1766038176 instance=ExtResource("5_tbgi4")]
+[node name="Menu" parent="CanvasLayer/Node" unique_id=1766038176 instance=ExtResource("6_0xqs2")]
 position = Vector2(1922, 1287)
 
 [node name="BurgerMenu" type="Node" parent="CanvasLayer" unique_id=845515993]
@@ -111,9 +111,9 @@ offset_top = 4.0
 offset_right = 1342.0
 offset_bottom = 260.0
 scale = Vector2(0.24000001, 0.24000001)
-texture_normal = ExtResource("8_tipki")
-texture_pressed = ExtResource("9_choun")
-texture_hover = ExtResource("10_ya4ey")
+texture_normal = ExtResource("7_ipmer")
+texture_pressed = ExtResource("8_av1gt")
+texture_hover = ExtResource("9_r7dij")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752778953]
 libraries/ = SubResource("AnimationLibrary_ya4ey")
