@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jwcuw4h664c4"]
 
-[ext_resource type="Texture2D" uid="uid://b3v4hol31wyfq" path="res://assets/Level 2_Sprite.png" id="1_geq1n"]
+[ext_resource type="Texture2D" uid="uid://b3v4hol31wyfq" path="res://assets/Level 2_sprite.png" id="1_geq1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ex8a5"]
 texture = ExtResource("1_geq1n")
@@ -87,13 +87,11 @@ texture_region_size = Vector2i(32, 32)
 38:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-4, -16, 4, -16, 16, -4, -8, -12)
 38:0/0/physics_layer_0/polygon_2/points = PackedVector2Array(16, -4, 16, 4, 4, 16, -4, 16, -8, 12, -8, -12)
 39:0/0 = 0
-39:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -8, 12, -8, 11.948654, -16, -12, -16)
-39:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, -4, 16, 4, 4, 16, 12, -8)
-39:0/0/physics_layer_0/polygon_2/points = PackedVector2Array(4, 16, -4, 16, -16, 4, -16, -4, -12, -8, 12, -8)
+39:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -16, 12, -16, 12, -8, -12, -8)
+39:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(12, -8, 16, -4, 16, 4, 4, 16, -4, 16, -16, 4, -16, -4, -12, -8)
 40:0/0 = 0
-40:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -12, 8, 12, 16, 11.948654, 16, -12)
-40:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(4, 16, -4, 16, -16, 4, 8, 12)
-40:0/0/physics_layer_0/polygon_2/points = PackedVector2Array(-16, 4, -16, -4, -4, -16, 4, -16, 8, -12, 8, 12)
+40:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -12, 16, 12, 8, 12, 8, -12)
+40:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(8, 12, 4, 16, -4, 16, -16, 4, -16, -4, -4, -16, 4, -16, 8, -12)
 41:0/0 = 0
 42:0/0 = 0
 43:0/0 = 0
@@ -205,3 +203,4 @@ position = Vector2(-203, -228)
 [node name="TileMap" type="TileMap" parent="." unique_id=1678945660]
 tile_set = SubResource("TileSet_asi28")
 format = 2
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -131069, 0, 0, -65533, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0)
