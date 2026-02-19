@@ -14,7 +14,7 @@ var pause_sling_audio := 1.7
 @export var max_drag_distance: float = 200.0
 @export var mind_drag_distance:float= 100.0
 @export var min_velocity_for_flap:float= 100.0
-@export var is_sticky=true
+@export var stickyness=0
 
 @onready var stretched_sock: Sprite2D = $"Stretched Sock"
 @onready var normal_sock: Sprite2D = $"Normal Sock"
@@ -115,6 +115,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if Input.is_action_just_released("drag"):
 		gravity_scale=1
+		set_stickiness(stickyness-1)
 		dragging = false
 		released = true          # mark that we DID release during this drag
 
@@ -158,9 +159,14 @@ func on_you_died_you_died_played() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	var shouldplayimpact=linear_velocity.length()>min_velocity_for_flap
+	if stickyness > 0:
+		gravity_scale=0
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0.0
 	if !is_playing_impact_sound:
-		if linear_velocity.length()>min_velocity_for_flap:
-			if is_sticky:
+		if shouldplayimpact:
+			if stickyness>0:
 				sticky_impact.play(0.5)
 			else:
 				impact.play(0)
@@ -169,10 +175,7 @@ func _on_body_entered(body: Node) -> void:
 			pass
 			#soft_impact.play(0)
 			#is_playing_impact_sound=true
-	if is_sticky:
-		gravity_scale=0
-		linear_velocity = Vector2.ZERO
-		angular_velocity = 0.0
+
 
 func _on_impact_finished() -> void:
 	await get_tree().create_timer(.5).timeout
@@ -195,3 +198,13 @@ func _on_level_2_finished() -> void:
 
 func _on_sticky_impact_finished() -> void:
 	_on_impact_finished()
+func set_stickiness(value:int):
+	stickyness=value
+	if stickyness>1:
+		normal_sock.region_rect=Rect2(167,0,22,32)
+	elif stickyness>0:
+		normal_sock.region_rect=Rect2(135,0,22,32)
+	elif stickyness<1:
+		normal_sock.region_rect=Rect2(7,0,22,32)
+	
+	

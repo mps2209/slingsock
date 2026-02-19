@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jwcuw4h664c4" path="res://scenes/Sewers.tscn" id="8_xpq2v"]
 [ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="9_0jmjk"]
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_2jdof"]
+[ext_resource type="PackedScene" uid="uid://4gs73hp7w3bu" path="res://scenes/waterfall.tscn" id="10_v8268"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -69,7 +70,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
-position = Vector2(671, 396)
+position = Vector2(7239, 396)
 remote_path = NodePath("../Camera2D")
 update_position = false
 update_rotation = false
@@ -132,6 +133,9 @@ offset_bottom = 277.0
 theme_override_fonts/normal_font = ExtResource("9_0jmjk")
 theme_override_font_sizes/normal_font_size = 35
 text = "Fresh water? Here?"
+
+[node name="Waterfall" parent="." unique_id=887391194 instance=ExtResource("10_v8268")]
+position = Vector2(8067, 10)
 
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="7_ipmer"]
 [ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="8_av1gt"]
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_r7dij"]
+[ext_resource type="PackedScene" uid="uid://4gs73hp7w3bu" path="res://scenes/waterfall.tscn" id="10_kbo48"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -117,6 +118,9 @@ texture_hover = ExtResource("9_r7dij")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752778953]
 libraries/ = SubResource("AnimationLibrary_ya4ey")
+
+[node name="Waterfall" parent="." unique_id=887391194 instance=ExtResource("10_kbo48")]
+position = Vector2(-955, -1372)
 
 [connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
