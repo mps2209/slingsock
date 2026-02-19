@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://g6p4nam1dpyq"]
+
+[ext_resource type="Script" uid="uid://c5lq4sq60kdq2" path="res://scenes/level_2.gd" id="1_qwp14"]
+[ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_3aekd"]
+[ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="5_khw7m"]
+[ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="6_wd6ad"]
+[ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="7_cd1f0"]
+[ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="8_k83s3"]
+[ext_resource type="PackedScene" uid="uid://jwcuw4h664c4" path="res://scenes/Sewers.tscn" id="8_xpq2v"]
+[ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_2jdof"]
+
+[sub_resource type="Animation" id="Animation_ya4ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5409, 427)]
+}
+
+[sub_resource type="Animation" id="Animation_choun"]
+resource_name = "intro"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2.462289, 1),
+"update": 0,
+"values": [Vector2(5409, 427), Vector2(561, 332)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_player"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya4ey"]
+_data = {
+&"RESET": SubResource("Animation_ya4ey"),
+&"intro": SubResource("Animation_choun")
+}
+
+[node name="Level2" type="Node2D" unique_id=1038294997]
+script = ExtResource("1_qwp14")
+
+[node name="Sewers" parent="." unique_id=657335385 instance=ExtResource("8_xpq2v")]
+position = Vector2(464, 480)
+scale = Vector2(5, 5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
+position = Vector2(671, 396)
+remote_path = NodePath("../Camera2D")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Center" type="Node2D" parent="." unique_id=812441169]
+position = Vector2(237, 245)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
+position = Vector2(5409, 427)
+position_smoothing_enabled = true
+
+[node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_3aekd")]
+visible = false
+position = Vector2(0, 0)
+
+[node name="Sockcess" parent="Camera2D" unique_id=1863315230 instance=ExtResource("5_khw7m")]
+visible = false
+position = Vector2(-588, -366)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1886666360]
+
+[node name="Node" type="Node" parent="CanvasLayer" unique_id=1161820637]
+process_mode = 3
+
+[node name="Menu" parent="CanvasLayer/Node" unique_id=1766038176 instance=ExtResource("6_wd6ad")]
+position = Vector2(1922, 1287)
+
+[node name="BurgerMenu" type="Node" parent="CanvasLayer" unique_id=845515993]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/BurgerMenu" unique_id=594803353]
+process_mode = 3
+offset_left = 1086.0
+offset_top = 4.0
+offset_right = 1342.0
+offset_bottom = 260.0
+scale = Vector2(0.24000001, 0.24000001)
+texture_normal = ExtResource("7_cd1f0")
+texture_pressed = ExtResource("8_k83s3")
+texture_hover = ExtResource("9_2jdof")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752778953]
+libraries/ = SubResource("AnimationLibrary_ya4ey")
+
+[connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
+[connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]

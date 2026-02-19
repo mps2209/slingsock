@@ -21,6 +21,7 @@ var pause_sling_audio := 1.7
 @onready var impact: AudioStreamPlayer2D = $Impact
 @onready var soft_impact: AudioStreamPlayer2D = $SoftImpact
 @onready var level_1: AudioStreamPlayer2D = $Level1
+@onready var level_2: AudioStreamPlayer2D = $Level2
 
 var is_playing_impact_sound=false
 
@@ -38,6 +39,11 @@ var level = "level1"
 func _ready() -> void:
 	spawn = global_position
 	input_pickable = true
+	match level:
+		"level1":
+			level_1.play(0)
+		"level2":
+			level_2.play(0)
 
 func _physics_process(delta: float) -> void:
 	update_movement_state()
@@ -172,3 +178,7 @@ func _on_soft_impact_finished() -> void:
 
 func _on_audio_stream_player_2d_finished() -> void:
 	level_1.play(0)
+
+
+func _on_level_2_finished() -> void:
+	level_2.play(0)
