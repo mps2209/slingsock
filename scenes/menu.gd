@@ -16,9 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("menu"):
 		toggleMenu()
 func _on_resume_pressed() -> void:
-	get_tree().paused = false
-	resume.hide()
-	quit.hide()
+	toggleMenu()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
@@ -33,3 +31,7 @@ func toggleMenu():
 		resume.show()
 		quit.show()
 	showMenu=!showMenu
+
+
+func _on_texture_button_pressed() -> void:
+	toggleMenu()

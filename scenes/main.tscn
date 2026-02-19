@@ -1,15 +1,75 @@
 [gd_scene format=3 uid="uid://d08ylwlndel7w"]
 
-[ext_resource type="PackedScene" uid="uid://dkj8s0ht1238h" path="res://scenes/player.tscn" id="1_g60tx"]
 [ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_vbkcy"]
 [ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="10_ya4ey"]
+
+[sub_resource type="Animation" id="Animation_ya4ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1359, -1181)]
+}
+
+[sub_resource type="Animation" id="Animation_choun"]
+resource_name = "intro"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3.4822013, 1),
+"update": 0,
+"values": [Vector2(1424, 469), Vector2(-1359, -1181)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_player"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya4ey"]
+_data = {
+&"RESET": SubResource("Animation_ya4ey"),
+&"intro": SubResource("Animation_choun")
+}
 
 [node name="Main" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_vbkcy")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
+position = Vector2(-1359, -1181)
+remote_path = NodePath("../Camera2D")
+update_position = false
+update_rotation = false
+update_scale = false
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
@@ -20,20 +80,6 @@ scale = Vector2(5, 5)
 [node name="Exit" parent="." unique_id=410037114 instance=ExtResource("5_o6xl0")]
 position = Vector2(1417, 482)
 scale = Vector2(4.9999804, 4.9999804)
-
-[node name="Player" parent="." unique_id=1827484345 instance=ExtResource("1_g60tx")]
-position = Vector2(-1359, -1181)
-gravity_scale = 1.0
-continuous_cd = 1
-max_power = 1250.0
-max_drag_distance = 1200.0
-mind_drag_distance = 400.0
-min_velocity_for_flap = 250.0
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=1522498002]
-remote_path = NodePath("../../Camera2D")
-update_rotation = false
-update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=372067963]
 position = Vector2(-1359, -1181)
@@ -56,7 +102,22 @@ process_mode = 3
 [node name="Menu" parent="CanvasLayer/Node" unique_id=1766038176 instance=ExtResource("5_tbgi4")]
 position = Vector2(1922, 1287)
 
+[node name="BurgerMenu" type="Node" parent="CanvasLayer" unique_id=845515993]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/BurgerMenu" unique_id=594803353]
+process_mode = 3
+offset_left = 1086.0
+offset_top = 4.0
+offset_right = 1342.0
+offset_bottom = 260.0
+scale = Vector2(0.24000001, 0.24000001)
+texture_normal = ExtResource("8_tipki")
+texture_pressed = ExtResource("9_choun")
+texture_hover = ExtResource("10_ya4ey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752778953]
+libraries/ = SubResource("AnimationLibrary_ya4ey")
+
 [connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
-[connection signal="died" from="Player" to="Camera2D/YouDied" method="_on_player_died"]
-[connection signal="you_died_played" from="Camera2D/YouDied" to="Player" method="_on_you_died_you_died_played"]
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
+[connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
