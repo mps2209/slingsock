@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbw27wj6m5hj4"]
 
 [ext_resource type="Texture2D" uid="uid://biwg01dlvcew6" path="res://Screens/onetotwo.png" id="1_r334y"]
+[ext_resource type="Script" uid="uid://bwbu4eotiiguc" path="res://scenes/Cutscenes/intro_2.gd" id="1_rm3dj"]
 [ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="2_rm3dj"]
 
 [sub_resource type="Gradient" id="Gradient_rbse2"]
@@ -59,6 +60,7 @@ _data = {
 }
 
 [node name="Intro2" type="Node2D" unique_id=774938150]
+script = ExtResource("1_rm3dj")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=594976478]
 position = Vector2(527, 356)
