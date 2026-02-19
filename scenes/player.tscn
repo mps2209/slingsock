@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dlqncyh0a88at" path="res://sounds/513934__olver__slingshot-1.wav" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://o1134xrc762n" path="res://sounds/670100__mikefozzy98__cloth-footstep-5.wav" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://d274ov5scccn5" path="res://sounds/778512__blondpanda__denim_and_cloth_step_foley_10.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://c0eq14kssxho8" path="res://sounds/Level1.wav" id="6_tuyoq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 bounce = 0.25
@@ -60,6 +61,11 @@ stream = ExtResource("5_qlg0r")
 volume_db = -5.0
 pitch_scale = 0.78
 
+[node name="Level1" type="AudioStreamPlayer2D" parent="." unique_id=390036345]
+stream = ExtResource("6_tuyoq")
+autoplay = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="Impact" to="." method="_on_impact_finished"]
 [connection signal="finished" from="SoftImpact" to="." method="_on_soft_impact_finished"]
+[connection signal="finished" from="Level1" to="." method="_on_audio_stream_player_2d_finished"]

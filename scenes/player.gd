@@ -20,6 +20,8 @@ var pause_sling_audio := 1.7
 @onready var slingshot: AudioStreamPlayer2D = $Slingshot
 @onready var impact: AudioStreamPlayer2D = $Impact
 @onready var soft_impact: AudioStreamPlayer2D = $SoftImpact
+@onready var level_1: AudioStreamPlayer2D = $Level1
+
 var is_playing_impact_sound=false
 
 var flyingSockArea = Rect2(107, 0, 9, 25)
@@ -32,7 +34,7 @@ var released := false      # tracks whether user has released during this drag
 
 signal died
 var spawn: Vector2 = Vector2.ZERO
-
+var level = "level1"
 func _ready() -> void:
 	spawn = global_position
 	input_pickable = true
@@ -166,3 +168,7 @@ func _on_soft_impact_finished() -> void:
 	await get_tree().create_timer(1).timeout
 	is_playing_impact_sound=false
  # Replace with function body.
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	level_1.play(0)

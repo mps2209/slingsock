@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://01j64legloym"]
 
 [ext_resource type="Script" uid="uid://bv6c03akxvqkq" path="res://scenes/start_screen.gd" id="1_tx5wa"]
+[ext_resource type="FontFile" uid="uid://ei2hw6wguu0h" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_he1sj"]
+[ext_resource type="Texture2D" uid="uid://br06uxgljke0x" path="res://Screens/Start.png" id="2_o7i0r"]
 
 [node name="Start Screen" type="Node2D" unique_id=2096571283]
 script = ExtResource("1_tx5wa")
@@ -9,17 +11,23 @@ script = ExtResource("1_tx5wa")
 
 [node name="Start" type="Button" parent="Button Manager" unique_id=963397099]
 offset_left = 492.0
-offset_top = 317.0
+offset_top = 365.0
 offset_right = 542.0
-offset_bottom = 350.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("2_he1sj")
 text = "Start"
 
 [node name="Exit" type="Button" parent="Button Manager" unique_id=336079495]
-offset_left = 492.0
-offset_top = 353.0
-offset_right = 542.0
-offset_bottom = 386.0
+offset_left = 502.0
+offset_top = 424.0
+offset_right = 568.0
+offset_bottom = 457.0
+theme_override_fonts/font = ExtResource("2_he1sj")
 text = "Exit"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=885251440]
+texture = ExtResource("2_o7i0r")
+centered = false
 
 [connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/Exit" to="." method="_on_exit_pressed"]
