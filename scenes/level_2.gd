@@ -6,13 +6,13 @@ var player: Player
 @onready var spawn: Node2D = $Spawn
 @onready var you_died: YouDiedAnim = $Camera2D/YouDied
 @onready var camera_2d: CustomCamera = $Camera2D
+@onready var sockcess: Node2D = $Camera2D/Sockcess
 
 func _ready() -> void:
 	animation_player.play("intro")
 
 func _on_sockcess_animation_done() -> void:
-	pass
-	#get_tree().change_scene_to_file("res://scenes/Cutscenes/intro2.tscn")
+	get_tree().change_scene_to_file("res://scenes/Cutscenes/intro_3.tscn")
 	
 func spawn_player():
 	var scene = preload("res://scenes/player.tscn")

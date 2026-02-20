@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://dj3s4o1danetu" path="res://scenes/waterfall.gd" id="1_c4i1o"]
 [ext_resource type="AudioStream" uid="uid://uq0jgjjaxduu" path="res://sounds/431120__billypalmer__water-on-cloth.wav" id="2_cwatv"]
 
-[node name="Waterfall" type="Node2D" unique_id=887391194]
+[node name="Waterfall" type="Area2D" unique_id=1385174779]
 script = ExtResource("1_c4i1o")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1652746914]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=31563055]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=31563055]
 position = Vector2(0, 37.71482)
 scale = Vector2(1, 3.580402)
 polygon = PackedVector2Array(-19, -11, 17, -12, 16, 187, -16, 182)
@@ -16,4 +14,4 @@ polygon = PackedVector2Array(-19, -11, 17, -12, 16, 187, -16, 182)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1635362167]
 stream = ExtResource("2_cwatv")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

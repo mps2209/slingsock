@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqxnipntgi1hu"]
+
+[ext_resource type="Texture2D" uid="uid://bjwri1ktxym54" path="res://Screens/IntroLevel3.jpg" id="1_8bjis"]
+[ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="2_jco55"]
+
+[node name="Intro3" type="Node2D" unique_id=1809833190]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8543018]
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("1_8bjis")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1176414898]
+offset_left = 530.0
+offset_top = 82.0
+offset_right = 1126.0
+offset_bottom = 404.0
+theme_override_fonts/normal_font = ExtResource("2_jco55")
+text = "I have no Idea where I am...
+Maybe if I can climb up, I can take a look and find a way back home."

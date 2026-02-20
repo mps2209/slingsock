@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://duhigh7k4c8x1" path="res://assets/ExitPipe.png" id="2_uyw7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0aq0"]
-size = Vector2(64, 64)
+size = Vector2(41, 48)
 
 [node name="Exit" type="Node2D" unique_id=410037114]
 script = ExtResource("1_uyw7u")
@@ -12,6 +12,7 @@ script = ExtResource("1_uyw7u")
 [node name="Area2D" type="Area2D" parent="." unique_id=1947672468]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2116447522]
+position = Vector2(9.5, 0)
 shape = SubResource("RectangleShape2D_l0aq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1644334545]

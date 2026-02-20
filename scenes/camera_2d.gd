@@ -105,3 +105,7 @@ func _process(delta: float) -> void:
 
 	# Apply as the built-in Camera2D offset (doesn't touch global_position)
 	offset = _current_offset
+
+
+func _on_exit_player_exited() -> void:
+	pass # Replace with function body.

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_2jdof"]
 [ext_resource type="PackedScene" uid="uid://4gs73hp7w3bu" path="res://scenes/waterfall.tscn" id="10_v8268"]
 [ext_resource type="Script" uid="uid://cnky76pwluxwq" path="res://scenes/deathzone.gd" id="11_rcugv"]
+[ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="13_khw7m"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -64,10 +65,19 @@ _data = {
 &"intro": SubResource("Animation_choun")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfxww"]
+size = Vector2(30, 578)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jdof"]
+size = Vector2(30, 470)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rcugv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k83s3"]
+size = Vector2(3370, 15)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cd1f0"]
-size = Vector2(1047, 15)
+size = Vector2(1129, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6ad"]
 size = Vector2(2250, 15)
@@ -86,7 +96,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="Spawn" type="Node2D" parent="." unique_id=1262884778]
-position = Vector2(7844, 404)
+position = Vector2(650, 346)
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
@@ -130,10 +140,10 @@ texture_hover = ExtResource("9_2jdof")
 libraries/ = SubResource("AnimationLibrary_ya4ey")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=75515879]
-offset_left = 569.0
-offset_top = -30.0
-offset_right = 1022.1429
-offset_bottom = 204.0
+offset_left = 694.0
+offset_top = 246.0
+offset_right = 1147.1428
+offset_bottom = 480.0
 theme_override_fonts/normal_font = ExtResource("9_0jmjk")
 theme_override_font_sizes/normal_font_size = 35
 text = "The sewage smells terrible, better not touch it..."
@@ -147,8 +157,32 @@ theme_override_fonts/normal_font = ExtResource("9_0jmjk")
 theme_override_font_sizes/normal_font_size = 35
 text = "Fresh water? Here?"
 
+[node name="Deathzone4" type="Area2D" parent="." unique_id=2036893267]
+position = Vector2(13826, -2485)
+script = ExtResource("11_rcugv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone4" unique_id=164400418]
+position = Vector2(3, 279)
+shape = SubResource("RectangleShape2D_rfxww")
+
 [node name="Waterfall" parent="." unique_id=887391194 instance=ExtResource("10_v8268")]
 position = Vector2(8387, 63)
+
+[node name="Deathzone3" type="Area2D" parent="." unique_id=1138786264]
+position = Vector2(11106, -1186)
+script = ExtResource("11_rcugv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone3" unique_id=1078870440]
+position = Vector2(3, 279)
+shape = SubResource("RectangleShape2D_rfxww")
+
+[node name="Deathzone2" type="Area2D" parent="." unique_id=2046300362]
+position = Vector2(1344, 235)
+script = ExtResource("11_rcugv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone2" unique_id=1295500394]
+position = Vector2(5, 225)
+shape = SubResource("RectangleShape2D_2jdof")
 
 [node name="Deathzone" type="Area2D" parent="." unique_id=1497461182]
 position = Vector2(6324, 812)
@@ -157,14 +191,18 @@ script = ExtResource("11_rcugv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone" unique_id=842818942]
 shape = SubResource("WorldBoundaryShape2D_rcugv")
 
-[node name="Waterfall2" parent="." unique_id=2091112315 instance=ExtResource("10_v8268")]
-position = Vector2(9990, -1077)
+[node name="Flooring5" type="StaticBody2D" parent="." unique_id=226305897]
+position = Vector2(12229, -2020)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring5" unique_id=359148058]
+position = Vector2(1675, -2.5)
+shape = SubResource("RectangleShape2D_k83s3")
 
 [node name="Flooring4" type="StaticBody2D" parent="." unique_id=42039854]
 position = Vector2(10789, 380)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring4" unique_id=15603686]
-position = Vector2(513.5, -2.5)
+position = Vector2(554.5, -2.5)
 shape = SubResource("RectangleShape2D_cd1f0")
 
 [node name="Flooring3" type="StaticBody2D" parent="." unique_id=1701430711]
@@ -188,6 +226,22 @@ position = Vector2(286, 644)
 position = Vector2(1296.25, 52.5)
 shape = SubResource("RectangleShape2D_3aekd")
 
+[node name="Exit" parent="." unique_id=410037114 instance=ExtResource("13_khw7m")]
+position = Vector2(15105, -2804.0002)
+rotation = -1.5707964
+scale = Vector2(2.52, 2.52)
+
+[node name="Waterfall3" parent="." unique_id=2096472093 instance=ExtResource("10_v8268")]
+position = Vector2(9989, -2028)
+scale = Vector2(1, 2.2799904)
+
+[node name="Waterfall2" parent="." unique_id=1385174779 instance=ExtResource("10_v8268")]
+position = Vector2(11749, -260)
+
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
+[connection signal="body_entered" from="Deathzone4" to="Deathzone4" method="_on_body_entered"]
+[connection signal="body_entered" from="Deathzone3" to="Deathzone3" method="_on_body_entered"]
+[connection signal="body_entered" from="Deathzone2" to="Deathzone2" method="_on_body_entered"]
 [connection signal="body_entered" from="Deathzone" to="Deathzone" method="_on_body_entered"]
+[connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
