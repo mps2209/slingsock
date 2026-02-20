@@ -65,6 +65,12 @@ _data = {
 &"intro": SubResource("Animation_choun")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ax8h"]
+size = Vector2(1039, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0roy1"]
+size = Vector2(461, 1712.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfxww"]
 size = Vector2(30, 578)
 
@@ -96,7 +102,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="Spawn" type="Node2D" parent="." unique_id=1262884778]
-position = Vector2(650, 346)
+position = Vector2(620, 397)
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
@@ -156,6 +162,18 @@ offset_bottom = 277.0
 theme_override_fonts/normal_font = ExtResource("9_0jmjk")
 theme_override_font_sizes/normal_font_size = 35
 text = "Fresh water? Here?"
+
+[node name="Deathzone5" type="Area2D" parent="." unique_id=1741718388]
+position = Vector2(16028, -2155)
+script = ExtResource("11_rcugv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone5" unique_id=190517691]
+position = Vector2(12, 153)
+shape = SubResource("RectangleShape2D_2ax8h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Deathzone5" unique_id=1271693449]
+position = Vector2(503.5, -681.75)
+shape = SubResource("RectangleShape2D_0roy1")
 
 [node name="Deathzone4" type="Area2D" parent="." unique_id=2036893267]
 position = Vector2(13826, -2485)
@@ -236,10 +254,12 @@ position = Vector2(9989, -2028)
 scale = Vector2(1, 2.2799904)
 
 [node name="Waterfall2" parent="." unique_id=1385174779 instance=ExtResource("10_v8268")]
-position = Vector2(11749, -260)
+position = Vector2(11750, -889)
+scale = Vector2(1, 1.8400012)
 
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
+[connection signal="body_entered" from="Deathzone5" to="Deathzone5" method="_on_body_entered"]
 [connection signal="body_entered" from="Deathzone4" to="Deathzone4" method="_on_body_entered"]
 [connection signal="body_entered" from="Deathzone3" to="Deathzone3" method="_on_body_entered"]
 [connection signal="body_entered" from="Deathzone2" to="Deathzone2" method="_on_body_entered"]
