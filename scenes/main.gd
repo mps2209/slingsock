@@ -19,7 +19,7 @@ func spawn_player():
 	add_child(instance)
 	player=instance
 	instance.position=spawn.position
-	player.spawn=spawn.position
+	GameManager.spawn=spawn.position
 	camera_2d.follow_target=player
 	camera_2d.enable_follow=true
 	player.died.connect(you_died.on_player_died)

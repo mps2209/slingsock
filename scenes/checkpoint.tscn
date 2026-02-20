@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dbcewi4vrgs3n"]
+
+[ext_resource type="Script" uid="uid://dg4n31vxods5e" path="res://scenes/Checkpoint.gd" id="1_yyywg"]
+[ext_resource type="Texture2D" uid="uid://d1p544x6xhdjs" path="res://assets/save.png" id="2_ywqth"]
+
+[sub_resource type="Animation" id="Animation_vsimk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ywqth"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5, 0.91666675, 1.0333334, 1.1333333, 1.2333335, 1.3000001),
+"transitions": PackedFloat32Array(0.13397174, 1.9318804, 1.0000036, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32), Vector2(0, 0), Vector2(0, -12), Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsimk"]
+_data = {
+&"RESET": SubResource("Animation_vsimk"),
+&"idle": SubResource("Animation_ywqth")
+}
+
+[node name="Checkpoint" type="Area2D" unique_id=1448661987]
+script = ExtResource("1_yyywg")
+activeColor = Color(0, 0.64369816, 3.85046e-07, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1321870409]
+scale = Vector2(3, 3)
+texture = ExtResource("2_ywqth")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=841605065]
+libraries/ = SubResource("AnimationLibrary_vsimk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

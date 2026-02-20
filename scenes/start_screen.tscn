@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bv6c03akxvqkq" path="res://scenes/start_screen.gd" id="1_tx5wa"]
 [ext_resource type="FontFile" uid="uid://ei2hw6wguu0h" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_he1sj"]
 [ext_resource type="Texture2D" uid="uid://br06uxgljke0x" path="res://Screens/Start.png" id="2_o7i0r"]
+[ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="3_r2jwc"]
 
 [sub_resource type="Gradient" id="Gradient_he1sj"]
 colors = PackedColorArray(0.1882353, 0.31764707, 0.50980395, 1, 0.1882353, 0.31764707, 0.50980395, 1)
@@ -31,6 +32,15 @@ offset_bottom = 457.0
 theme_override_fonts/font = ExtResource("2_he1sj")
 text = "Exit"
 
+[node name="CheckButton" type="CheckButton" parent="Button Manager" unique_id=1559647864]
+offset_left = 924.0
+offset_top = 585.0
+offset_right = 1120.0
+offset_bottom = 609.0
+theme_override_fonts/font = ExtResource("3_r2jwc")
+button_pressed = true
+text = "Checkpoints"
+
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1466148222]
 position = Vector2(491.00003, 378.00003)
 scale = Vector2(69.02344, 69.02344)
@@ -42,3 +52,4 @@ centered = false
 
 [connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="Button Manager/CheckButton" to="." method="_on_check_button_toggled"]

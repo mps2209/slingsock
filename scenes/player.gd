@@ -36,10 +36,8 @@ var is_dead := false
 var released := false      # tracks whether user has released during this drag
 
 signal died
-var spawn: Vector2 = Vector2.ZERO
 var level = "level1"
 func _ready() -> void:
-	spawn = global_position
 	input_pickable = true
 	match level:
 		"level1":
@@ -157,7 +155,7 @@ func die() -> void:
 func on_you_died_you_died_played() -> void:
 	is_dead = false
 	is_moving = false
-	position = spawn
+	position = GameManager.spawn
 	gravity_scale=1
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0

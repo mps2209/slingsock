@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="8_av1gt"]
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_r7dij"]
 [ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="11_4dyl1"]
+[ext_resource type="PackedScene" uid="uid://dbcewi4vrgs3n" path="res://scenes/checkpoint.tscn" id="12_jxjwb"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -127,6 +128,12 @@ theme_override_fonts/normal_font = ExtResource("11_4dyl1")
 theme_override_font_sizes/normal_font_size = 24
 text = "Click and drag to draw back the Slingsock.
 Release to fire."
+
+[node name="Checkpoint" parent="." unique_id=1448661987 instance=ExtResource("12_jxjwb")]
+position = Vector2(-807, -94)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint" unique_id=571788765]
+polygon = PackedVector2Array(-101, 116, 262, 114, 263, -246, -106, -247)
 
 [connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]

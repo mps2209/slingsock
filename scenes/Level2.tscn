@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="13_khw7m"]
 [ext_resource type="Texture2D" uid="uid://cu8oc80bya5v7" path="res://assets/danger.png" id="15_cd1f0"]
 [ext_resource type="Texture2D" uid="uid://b2fvpbkonsxgi" path="res://assets/wrong way.png" id="16_k83s3"]
+[ext_resource type="PackedScene" uid="uid://dbcewi4vrgs3n" path="res://scenes/checkpoint.tscn" id="17_2jdof"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -96,6 +97,12 @@ size = Vector2(1450, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3aekd"]
 size = Vector2(2727.5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epefj"]
+size = Vector2(86.30615, 945.0082)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24quv"]
+size = Vector2(134, 890)
 
 [node name="Level2" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_qwp14")
@@ -275,7 +282,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_wd6ad")
 
 [node name="Arrow4" type="Sprite2D" parent="Signs" unique_id=383507248]
-position = Vector2(6234, -299)
+position = Vector2(7163, -279)
 rotation = 1.5707964
 scale = Vector2(4, 4)
 texture = ExtResource("2_wd6ad")
@@ -304,7 +311,7 @@ scale = Vector2(4, 3.9452758)
 texture = ExtResource("2_wd6ad")
 
 [node name="Arrow10" type="Sprite2D" parent="Signs" unique_id=444425852]
-position = Vector2(11382, 40)
+position = Vector2(11581, 15)
 scale = Vector2(4, 3.9452758)
 texture = ExtResource("2_wd6ad")
 
@@ -346,7 +353,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("16_k83s3")
 
 [node name="Wrong way4" type="Sprite2D" parent="Signs" unique_id=1494786112]
-position = Vector2(9834, -1361)
+position = Vector2(9607, -1534)
 scale = Vector2(3, 3)
 texture = ExtResource("16_k83s3")
 
@@ -361,13 +368,37 @@ scale = Vector2(3, 3)
 texture = ExtResource("15_cd1f0")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1208014907]
-offset_left = 11103.0
-offset_top = -1629.0
-offset_right = 11532.0
-offset_bottom = -1477.0
+offset_left = 10823.0
+offset_top = -1672.0
+offset_right = 11252.0
+offset_bottom = -1520.0
 theme_override_fonts/normal_font = ExtResource("9_0jmjk")
 theme_override_font_sizes/normal_font_size = 35
 text = "I smell more fresh water!"
+
+[node name="Waterfall4" parent="." unique_id=468583626 instance=ExtResource("10_v8268")]
+position = Vector2(15108, -3859)
+scale = Vector2(1, 2.5999954)
+
+[node name="Checkpoint" parent="." unique_id=1448661987 instance=ExtResource("17_2jdof")]
+position = Vector2(6229, -294.00003)
+scale = Vector2(1.0221976, 0.9343835)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint" unique_id=1246737491]
+position = Vector2(-1.9580078, -285.21478)
+shape = SubResource("RectangleShape2D_epefj")
+
+[node name="Checkpoint2" parent="." unique_id=1961608266 instance=ExtResource("17_2jdof")]
+position = Vector2(11144, 186)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2" unique_id=1309532132]
+position = Vector2(-1, -261)
+shape = SubResource("RectangleShape2D_24quv")
+
+[node name="Arrow10" type="Sprite2D" parent="." unique_id=1615935350]
+position = Vector2(11596, -1840)
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
 
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
