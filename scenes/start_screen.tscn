@@ -4,6 +4,12 @@
 [ext_resource type="FontFile" uid="uid://ei2hw6wguu0h" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_he1sj"]
 [ext_resource type="Texture2D" uid="uid://br06uxgljke0x" path="res://Screens/Start.png" id="2_o7i0r"]
 
+[sub_resource type="Gradient" id="Gradient_he1sj"]
+colors = PackedColorArray(0.1882353, 0.31764707, 0.50980395, 1, 0.1882353, 0.31764707, 0.50980395, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2jwc"]
+gradient = SubResource("Gradient_he1sj")
+
 [node name="Start Screen" type="Node2D" unique_id=2096571283]
 script = ExtResource("1_tx5wa")
 
@@ -24,6 +30,11 @@ offset_right = 568.0
 offset_bottom = 457.0
 theme_override_fonts/font = ExtResource("2_he1sj")
 text = "Exit"
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1466148222]
+position = Vector2(491.00003, 378.00003)
+scale = Vector2(69.02344, 69.02344)
+texture = SubResource("GradientTexture2D_r2jwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=885251440]
 texture = ExtResource("2_o7i0r")
