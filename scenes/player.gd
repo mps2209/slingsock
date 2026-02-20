@@ -146,6 +146,9 @@ func reset_stretched_sock() -> void:
 
 func die() -> void:
 	print("you died")
+	gravity_scale=0
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
 	if not is_dead:
 		died.emit()
 	is_dead = true
@@ -154,8 +157,10 @@ func on_you_died_you_died_played() -> void:
 	is_dead = false
 	is_moving = false
 	position = spawn
+	gravity_scale=1
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
+
 
 
 func _on_body_entered(body: Node) -> void:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://g6p4nam1dpyq"]
 
 [ext_resource type="Script" uid="uid://c5lq4sq60kdq2" path="res://scenes/level_2.gd" id="1_qwp14"]
+[ext_resource type="Script" uid="uid://cxm41n2pardf" path="res://scenes/camera_2d.gd" id="3_3aekd"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_3aekd"]
 [ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="5_khw7m"]
 [ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="6_wd6ad"]
@@ -10,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="9_0jmjk"]
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_2jdof"]
 [ext_resource type="PackedScene" uid="uid://4gs73hp7w3bu" path="res://scenes/waterfall.tscn" id="10_v8268"]
+[ext_resource type="Script" uid="uid://cnky76pwluxwq" path="res://scenes/deathzone.gd" id="11_rcugv"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -62,6 +64,8 @@ _data = {
 &"intro": SubResource("Animation_choun")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rcugv"]
+
 [node name="Level2" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_qwp14")
 
@@ -70,7 +74,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
-position = Vector2(7239, 396)
+position = Vector2(689, 239)
 remote_path = NodePath("../Camera2D")
 update_position = false
 update_rotation = false
@@ -83,6 +87,7 @@ position = Vector2(237, 245)
 position = Vector2(5409, 427)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("3_3aekd")
 
 [node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_3aekd")]
 visible = false
@@ -137,5 +142,13 @@ text = "Fresh water? Here?"
 [node name="Waterfall" parent="." unique_id=887391194 instance=ExtResource("10_v8268")]
 position = Vector2(8067, 10)
 
+[node name="Deathzone" type="Area2D" parent="." unique_id=1497461182]
+position = Vector2(6324, 812)
+script = ExtResource("11_rcugv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone" unique_id=842818942]
+shape = SubResource("WorldBoundaryShape2D_rcugv")
+
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
+[connection signal="body_entered" from="Deathzone" to="Deathzone" method="_on_body_entered"]

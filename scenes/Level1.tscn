@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c6h8ws3d37de8" path="res://scenes/main.gd" id="1_n34uq"]
 [ext_resource type="PackedScene" uid="uid://bnxhknxa2cdlp" path="res://scenes/washing_machine.tscn" id="2_kbo48"]
 [ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="3_4dyl1"]
+[ext_resource type="Script" uid="uid://cxm41n2pardf" path="res://scenes/camera_2d.gd" id="4_4dyl1"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_jxjwb"]
 [ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="5_2meft"]
 [ext_resource type="PackedScene" uid="uid://c5syow6phfxlt" path="res://scenes/menu.tscn" id="6_0xqs2"]
@@ -86,6 +87,7 @@ scale = Vector2(5.639971, 5.639971)
 position = Vector2(1424, 469)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("4_4dyl1")
 
 [node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jxjwb")]
 visible = false
