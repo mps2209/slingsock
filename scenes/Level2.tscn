@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://g6p4nam1dpyq"]
 
 [ext_resource type="Script" uid="uid://c5lq4sq60kdq2" path="res://scenes/level_2.gd" id="1_qwp14"]
+[ext_resource type="Texture2D" uid="uid://lpto0iekwxom" path="res://assets/Arrow.png" id="2_wd6ad"]
 [ext_resource type="Script" uid="uid://cxm41n2pardf" path="res://scenes/camera_2d.gd" id="3_3aekd"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_3aekd"]
 [ext_resource type="PackedScene" uid="uid://v6fs14gt1j0s" path="res://scenes/sockcess.tscn" id="5_khw7m"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://4gs73hp7w3bu" path="res://scenes/waterfall.tscn" id="10_v8268"]
 [ext_resource type="Script" uid="uid://cnky76pwluxwq" path="res://scenes/deathzone.gd" id="11_rcugv"]
 [ext_resource type="PackedScene" uid="uid://xyrlxsupyms1" path="res://scenes/exit.tscn" id="13_khw7m"]
+[ext_resource type="Texture2D" uid="uid://cu8oc80bya5v7" path="res://assets/danger.png" id="15_cd1f0"]
+[ext_resource type="Texture2D" uid="uid://b2fvpbkonsxgi" path="res://assets/wrong way.png" id="16_k83s3"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -256,6 +259,115 @@ scale = Vector2(1, 2.2799904)
 [node name="Waterfall2" parent="." unique_id=1385174779 instance=ExtResource("10_v8268")]
 position = Vector2(11750, -889)
 scale = Vector2(1, 1.8400012)
+
+[node name="Signs" type="Node2D" parent="." unique_id=1067830535]
+
+[node name="Arrow" type="Sprite2D" parent="Signs" unique_id=645346999]
+position = Vector2(2158, 475)
+rotation = 1.5707964
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow3" type="Sprite2D" parent="Signs" unique_id=1752723734]
+position = Vector2(4254, 385)
+rotation = 0.7853982
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow4" type="Sprite2D" parent="Signs" unique_id=383507248]
+position = Vector2(6234, -299)
+rotation = 1.5707964
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow5" type="Sprite2D" parent="Signs" unique_id=1453583577]
+position = Vector2(8647, 373)
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow6" type="Sprite2D" parent="Signs" unique_id=4856179]
+position = Vector2(9067, -578)
+rotation = 1.5707964
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow7" type="Sprite2D" parent="Signs" unique_id=464035546]
+position = Vector2(10449, -779)
+rotation = 3.1415927
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow9" type="Sprite2D" parent="Signs" unique_id=333562986]
+position = Vector2(10025, -186)
+rotation = 1.5707964
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow10" type="Sprite2D" parent="Signs" unique_id=444425852]
+position = Vector2(11382, 40)
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Danger" type="Sprite2D" parent="Signs" unique_id=1052745923]
+position = Vector2(11243, -863.00006)
+scale = Vector2(3, 3)
+texture = ExtResource("15_cd1f0")
+
+[node name="Danger2" type="Sprite2D" parent="Signs" unique_id=146201089]
+position = Vector2(1232, 421.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("15_cd1f0")
+
+[node name="Arrow2" type="Sprite2D" parent="Signs" unique_id=234949000]
+position = Vector2(793, 494)
+rotation = 1.5707964
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd6ad")
+
+[node name="Arrow15" type="Sprite2D" parent="Signs" unique_id=1771451044]
+position = Vector2(11183, -2378.0002)
+rotation = 1.5707964
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Wrong way" type="Sprite2D" parent="Signs" unique_id=1179985926]
+position = Vector2(9846, -2317)
+scale = Vector2(3, 3)
+texture = ExtResource("16_k83s3")
+
+[node name="Wrong way2" type="Sprite2D" parent="Signs" unique_id=255528583]
+position = Vector2(8247, -1212)
+scale = Vector2(3, 3)
+texture = ExtResource("16_k83s3")
+
+[node name="Wrong way3" type="Sprite2D" parent="Signs" unique_id=1443139630]
+position = Vector2(281, 435.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("16_k83s3")
+
+[node name="Wrong way4" type="Sprite2D" parent="Signs" unique_id=1494786112]
+position = Vector2(9834, -1361)
+scale = Vector2(3, 3)
+texture = ExtResource("16_k83s3")
+
+[node name="Arrow11" type="Sprite2D" parent="Signs" unique_id=266962775]
+position = Vector2(14924, -2241)
+scale = Vector2(4, 3.9452758)
+texture = ExtResource("2_wd6ad")
+
+[node name="Danger3" type="Sprite2D" parent="Signs" unique_id=1156379000]
+position = Vector2(13656, -2328)
+scale = Vector2(3, 3)
+texture = ExtResource("15_cd1f0")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1208014907]
+offset_left = 11103.0
+offset_top = -1629.0
+offset_right = 11532.0
+offset_bottom = -1477.0
+theme_override_fonts/normal_font = ExtResource("9_0jmjk")
+theme_override_font_sizes/normal_font_size = 35
+text = "I smell more fresh water!"
 
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
