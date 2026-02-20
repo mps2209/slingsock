@@ -66,6 +66,18 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rcugv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd1f0"]
+size = Vector2(1047, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6ad"]
+size = Vector2(2250, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khw7m"]
+size = Vector2(1450, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aekd"]
+size = Vector2(2727.5, 13)
+
 [node name="Level2" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_qwp14")
 
@@ -74,7 +86,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
-position = Vector2(689, 239)
+position = Vector2(7844, 404)
 remote_path = NodePath("../Camera2D")
 update_position = false
 update_rotation = false
@@ -140,7 +152,7 @@ theme_override_font_sizes/normal_font_size = 35
 text = "Fresh water? Here?"
 
 [node name="Waterfall" parent="." unique_id=887391194 instance=ExtResource("10_v8268")]
-position = Vector2(8067, 10)
+position = Vector2(8387, 63)
 
 [node name="Deathzone" type="Area2D" parent="." unique_id=1497461182]
 position = Vector2(6324, 812)
@@ -148,6 +160,37 @@ script = ExtResource("11_rcugv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone" unique_id=842818942]
 shape = SubResource("WorldBoundaryShape2D_rcugv")
+
+[node name="Waterfall2" parent="." unique_id=2091112315 instance=ExtResource("10_v8268")]
+position = Vector2(9990, -1077)
+
+[node name="Flooring4" type="StaticBody2D" parent="." unique_id=42039854]
+position = Vector2(10789, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring4" unique_id=15603686]
+position = Vector2(513.5, -2.5)
+shape = SubResource("RectangleShape2D_cd1f0")
+
+[node name="Flooring3" type="StaticBody2D" parent="." unique_id=1701430711]
+position = Vector2(6949, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring3" unique_id=1516499987]
+position = Vector2(1115, -2.5)
+shape = SubResource("RectangleShape2D_wd6ad")
+
+[node name="Flooring2" type="StaticBody2D" parent="." unique_id=404432934]
+position = Vector2(3428, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring2" unique_id=1040613889]
+position = Vector2(716, 113.5)
+shape = SubResource("RectangleShape2D_khw7m")
+
+[node name="Flooring" type="StaticBody2D" parent="." unique_id=2135564950]
+position = Vector2(286, 644)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flooring" unique_id=1791978181]
+position = Vector2(1296.25, 52.5)
+shape = SubResource("RectangleShape2D_3aekd")
 
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
 [connection signal="pressed" from="CanvasLayer/BurgerMenu/TextureButton" to="CanvasLayer/Node/Menu" method="_on_texture_button_pressed"]
