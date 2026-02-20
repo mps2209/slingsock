@@ -10,8 +10,7 @@ const MIN_ASPECT := 1.6   # below this, treat as "tall" (phone-ish)
 
 func _ready() -> void:
 	_adjust_zoom()
-	# Optional: if you want it to react when window size changes:
-	# get_viewport().size_changed.connect(_on_viewport_size_changed)
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
 
 func _adjust_zoom() -> void:
 	var size: Vector2i = DisplayServer.window_get_size()
@@ -30,6 +29,5 @@ func _adjust_zoom() -> void:
 	else:
 		zoom = ZOOM_LARGE_SCREEN
 
-# Uncomment this if you connected the signal in _ready():
-# func _on_viewport_size_changed() -> void:
-#     _adjust_zoom()
+func _on_viewport_size_changed() -> void:
+	_adjust_zoom()
