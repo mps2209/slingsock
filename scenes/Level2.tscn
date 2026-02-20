@@ -85,12 +85,8 @@ script = ExtResource("1_qwp14")
 position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
+[node name="Spawn" type="Node2D" parent="." unique_id=1262884778]
 position = Vector2(7844, 404)
-remote_path = NodePath("../Camera2D")
-update_position = false
-update_rotation = false
-update_scale = false
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)

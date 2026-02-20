@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bht27dpwjgl8a" path="res://assets/Sock Burger Menu.png" id="7_ipmer"]
 [ext_resource type="Texture2D" uid="uid://dxc1ufg08ktbv" path="res://assets/Sock Burger Menu Pressed.png" id="8_av1gt"]
 [ext_resource type="Texture2D" uid="uid://cy2vku5ue0yx" path="res://assets/Sock Burger Menu Hover.png" id="9_r7dij"]
+[ext_resource type="FontFile" uid="uid://dyorkfbk7hvmp" path="res://assets/fonts/PixelOperator8.ttf" id="11_4dyl1"]
 
 [sub_resource type="Animation" id="Animation_ya4ey"]
 length = 0.001
@@ -65,12 +66,8 @@ _data = {
 [node name="Main" type="Node2D" unique_id=1038294997]
 script = ExtResource("1_n34uq")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1522498002]
+[node name="Spawn" type="Node2D" parent="." unique_id=1318171695]
 position = Vector2(-1350, -1191)
-remote_path = NodePath("../Camera2D")
-update_position = false
-update_rotation = false
-update_scale = false
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)
@@ -87,6 +84,7 @@ position = Vector2(1424, 469)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 script = ExtResource("4_4dyl1")
+max_lookahead_y = 60.0
 
 [node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_jxjwb")]
 visible = false
@@ -119,6 +117,16 @@ texture_hover = ExtResource("9_r7dij")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752778953]
 libraries/ = SubResource("AnimationLibrary_ya4ey")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=247405547]
+offset_left = -1395.0
+offset_top = -1328.0
+offset_right = -1057.8889
+offset_bottom = -1180.0
+theme_override_fonts/normal_font = ExtResource("11_4dyl1")
+theme_override_font_sizes/normal_font_size = 24
+text = "Click and drag to draw back the Slingsock.
+Release to fire."
 
 [connection signal="player_exited" from="Exit" to="Camera2D/Sockcess" method="_on_exit_player_exited"]
 [connection signal="animation_done" from="Camera2D/Sockcess" to="." method="_on_sockcess_animation_done"]
