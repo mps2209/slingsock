@@ -227,7 +227,7 @@ position = Vector2(1296.25, 52.5)
 shape = SubResource("RectangleShape2D_3aekd")
 
 [node name="Exit" parent="." unique_id=410037114 instance=ExtResource("13_khw7m")]
-position = Vector2(15105, -2804.0002)
+position = Vector2(15110, -3788.0002)
 rotation = -1.5707964
 scale = Vector2(2.52, 2.52)
 

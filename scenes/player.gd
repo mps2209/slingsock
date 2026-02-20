@@ -149,6 +149,7 @@ func die() -> void:
 	gravity_scale=0
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
+	set_stickiness(0)
 	if not is_dead:
 		died.emit()
 	is_dead = true
