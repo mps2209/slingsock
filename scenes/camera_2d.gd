@@ -8,7 +8,7 @@ func _ready() -> void:
 	print(OS.get_name())
 	match OS.get_name():
 		"Android", "iOS":
-			zoom = Vector2(1, 1) # Zoomed out for smaller screens
+			zoom = Vector2(1.5, 1.5) # Zoomed out for smaller screens
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
