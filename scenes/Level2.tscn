@@ -112,7 +112,7 @@ position = Vector2(464, 480)
 scale = Vector2(5, 5)
 
 [node name="Spawn" type="Node2D" parent="." unique_id=1262884778]
-position = Vector2(620, 397)
+position = Vector2(535, 524)
 
 [node name="Center" type="Node2D" parent="." unique_id=812441169]
 position = Vector2(237, 245)

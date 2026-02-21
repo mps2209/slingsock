@@ -18,6 +18,7 @@ func spawn_player():
 	var instance = scene.instantiate()
 	add_child(instance)
 	player=instance
+	player.set_stickiness(0)
 	instance.position=spawn.position
 	GameManager.spawn=spawn.position
 	camera_2d.follow_target=player

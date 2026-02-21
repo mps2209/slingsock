@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c085m0fu2jfco"]
 
-[ext_resource type="Script" uid="uid://c5lq4sq60kdq2" path="res://scenes/level_2.gd" id="1_qtcjj"]
+[ext_resource type="Script" uid="uid://de3ii4ekyyxds" path="res://scenes/level_3.gd" id="1_qtcjj"]
 [ext_resource type="Script" uid="uid://cxm41n2pardf" path="res://scenes/camera_2d.gd" id="3_v36no"]
 [ext_resource type="PackedScene" uid="uid://du7ajmnt147dg" path="res://scenes/ufo_platform.tscn" id="4_kid5y"]
 [ext_resource type="PackedScene" uid="uid://qsn53pw3ie54" path="res://scenes/you_died.tscn" id="4_mw3i8"]
