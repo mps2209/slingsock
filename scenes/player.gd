@@ -24,17 +24,21 @@ var pause_sling_audio := 1.7
 @onready var level_1: AudioStreamPlayer2D = $Level1
 @onready var level_2: AudioStreamPlayer2D = $Level2
 @onready var sticky_impact: AudioStreamPlayer2D = $StickyImpact
+@onready var level_3: AudioStreamPlayer2D = $Level3
 
 var is_playing_impact_sound=false
 
 var flyingSockArea = Rect2(107, 0, 9, 25)
 var normalSockArea = Rect2(9, 3, 19, 28)
 
+var sticks_to_ufo=false
+var ufo:Ufo=null
+var stick_offset: Vector2 = Vector2.ZERO
 var is_flying := false
 var is_moving := false
 var is_dead := false
 var released := false      # tracks whether user has released during this drag
-
+var origin_parent:Node2D
 signal died
 var level = "level1"
 func _ready() -> void:
@@ -44,7 +48,8 @@ func _ready() -> void:
 			level_1.play(0)
 		"level2":
 			level_2.play(0)
-
+		"level3":
+			level_3.play(0)
 func _physics_process(delta: float) -> void:
 	update_movement_state()
 
@@ -105,15 +110,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	var BOTTOM_OFFSET := -PI / 2
 	stretched_sock.rotation = (target_global_angle + BOTTOM_OFFSET) - global_rotation
 
-	var drag_vector: Vector2 = drag_start - mouse_pos
+	var drag_vector: Vector2 = global_position - mouse_pos
 	var drag_dist: float = drag_vector.length()
 	var t = clamp(drag_dist / max_drag_distance, 0.0, 1.0)
 	var stretch = lerp(min_stretch_scale, max_stretch_scale, t)
 	stretched_sock.scale.y = stretch
 
 	if Input.is_action_just_released("drag"):
+		sticks_to_ufo=false
+		ufo=null
 		gravity_scale=1
-		set_stickiness(stickyness-1)
+		if level!="level3":
+			set_stickiness(stickyness-1)
 		dragging = false
 		released = true          # mark that we DID release during this drag
 
@@ -179,7 +187,10 @@ func _on_body_entered(body: Node) -> void:
 			pass
 			#soft_impact.play(0)
 			#is_playing_impact_sound=true
-
+	if body is Ufo:
+		sticks_to_ufo=true
+		ufo=body
+		stick_offset = global_position - ufo.global_position  # store ONCE
 
 func _on_impact_finished() -> void:
 	await get_tree().create_timer(.5).timeout
@@ -212,3 +223,15 @@ func set_stickiness(value:int):
 		normal_sock.region_rect=Rect2(7,0,22,32)
 	
 	
+func _integrate_forces(body_state):
+	set_use_custom_integrator(false)
+	if sticks_to_ufo and ufo != null:
+		set_use_custom_integrator(true)
+		var target = ufo.global_position + stick_offset
+		var xform = body_state.transform
+		xform.origin = target
+		body_state.transform = xform
+		body_state.linear_velocity = Vector2.ZERO
+
+func _on_level_3_finished() -> void:
+	level_3.play(0)

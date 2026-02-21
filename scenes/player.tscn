@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c0eq14kssxho8" path="res://sounds/Level1.wav" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://b773nlearpbbs" path="res://sounds/Level2.wav" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://b75mtpuwi07a0" path="res://sounds/570787__afonsosantos00__slap.wav" id="8_smehm"]
+[ext_resource type="AudioStream" uid="uid://bnqiob50yql8n" path="res://sounds/Level3.wav" id="9_ur7pv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2els"]
 bounce = 0.25
@@ -17,6 +18,7 @@ radius = 16.212456
 height = 69.5994
 
 [node name="Player" type="RigidBody2D" unique_id=213904822]
+z_index = 5
 physics_material_override = SubResource("PhysicsMaterial_g2els")
 continuous_cd = 2
 contact_monitor = true
@@ -74,9 +76,14 @@ stream = ExtResource("7_fjrip")
 stream = ExtResource("8_smehm")
 volume_db = 3.0
 
+[node name="Level3" type="AudioStreamPlayer2D" parent="." unique_id=882032694]
+stream = ExtResource("9_ur7pv")
+volume_db = -10.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="Impact" to="." method="_on_impact_finished"]
 [connection signal="finished" from="SoftImpact" to="." method="_on_soft_impact_finished"]
 [connection signal="finished" from="Level1" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="finished" from="Level2" to="." method="_on_level_2_finished"]
 [connection signal="finished" from="StickyImpact" to="." method="_on_sticky_impact_finished"]
+[connection signal="finished" from="Level3" to="." method="_on_level_3_finished"]

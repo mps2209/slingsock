@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://du7ajmnt147dg"]
+
+[ext_resource type="Texture2D" uid="uid://b78eq1406fabk" path="res://assets/Level_3_tiles_V2.png" id="1_jib25"]
+[ext_resource type="Script" uid="uid://dax8eu4nerhbu" path="res://scenes/ufo_platform.gd" id="1_wbuge"]
+
+[sub_resource type="Gradient" id="Gradient_op6oy"]
+offsets = PackedFloat32Array(0, 0.9960091, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wbuge"]
+gradient = SubResource("Gradient_op6oy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_qwgo1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w71uj"]
+gradient = SubResource("Gradient_qwgo1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbuge"]
+size = Vector2(8.400002, 45.800007)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=1811339686]
+scale = Vector2(5, 5)
+script = ExtResource("1_wbuge")
+
+[node name="Beam" type="Node2D" parent="." unique_id=733206911]
+position = Vector2(0.2, 27.6)
+scale = Vector2(0.035, 0.049)
+
+[node name="Sprite2D" type="Sprite2D" parent="Beam" unique_id=1176269708]
+position = Vector2(-5.5771446, 498.18405)
+scale = Vector2(3.7457144, 2.56286)
+texture = SubResource("GradientTexture2D_wbuge")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Beam" unique_id=1722711380]
+position = Vector2(-5.714286, 36)
+scale = Vector2(3.8, 15)
+texture = SubResource("GradientTexture2D_w71uj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1662060100]
+texture = ExtResource("1_jib25")
+region_enabled = true
+region_rect = Rect2(99, 0, 34, 34)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=834052738]
+polygon = PackedVector2Array(-15.999999, 0, -15.999999, -1.9999999, -1.8, -13.999999, 1.9999999, -13.999999, 15.999999, -2.1999998, 15.999999, 0.19999999, 3.9999998, 6.9999995, -3.9999998, 6.9999995)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=447512441]
+position = Vector2(3.3378595e-07, 29.699999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_wbuge")

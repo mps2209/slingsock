@@ -30,6 +30,7 @@ var _is_dragging: bool = false
 var _target_offset: Vector2 = Vector2.ZERO
 var _current_offset: Vector2 = Vector2.ZERO
 var _aspect_scale: Vector2 = Vector2.ONE
+var animation_done=false
 # Emitted so your slingshot / aiming system can read the raw drag
 # without being coupled to the camera at all.
 signal drag_started(screen_pos: Vector2)
@@ -37,7 +38,6 @@ signal drag_updated(drag_vector: Vector2)
 signal drag_ended(drag_vector: Vector2)
 
 func _ready() -> void:
-	_adjust_zoom()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 
 func _adjust_zoom() -> void:
@@ -58,9 +58,12 @@ func _adjust_zoom() -> void:
 		zoom = ZOOM_LARGE_SCREEN
 
 func _on_viewport_size_changed() -> void:
+	if !animation_done:
+		return
 	_adjust_zoom()
 
 func _update_aspect_scale() -> void:
+
 	var vp_size: Vector2 = get_viewport_rect().size
 	# Normalize so the LARGER axis = 1.0, smaller axis < 1.0
 	if vp_size.x >= vp_size.y:
@@ -109,3 +112,9 @@ func _process(delta: float) -> void:
 
 func _on_exit_player_exited() -> void:
 	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="intro":
+		_adjust_zoom()
+		animation_done=true
