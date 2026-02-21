@@ -41,6 +41,30 @@ theme_override_fonts/font = ExtResource("3_r2jwc")
 button_pressed = true
 text = "Checkpoints"
 
+[node name="Lvl1" type="Button" parent="Button Manager" unique_id=973706778]
+offset_left = 1006.0
+offset_top = 412.0
+offset_right = 1090.0
+offset_bottom = 445.0
+theme_override_fonts/font = ExtResource("2_he1sj")
+text = "LVL1"
+
+[node name="Lvl2" type="Button" parent="Button Manager" unique_id=33319832]
+offset_left = 1006.0
+offset_top = 459.0
+offset_right = 1090.0
+offset_bottom = 492.0
+theme_override_fonts/font = ExtResource("2_he1sj")
+text = "LVL2"
+
+[node name="Lvl3" type="Button" parent="Button Manager" unique_id=145472310]
+offset_left = 1006.0
+offset_top = 503.0
+offset_right = 1090.0
+offset_bottom = 536.0
+theme_override_fonts/font = ExtResource("2_he1sj")
+text = "LVL3"
+
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1466148222]
 position = Vector2(491.00003, 378.00003)
 scale = Vector2(69.02344, 69.02344)
@@ -53,3 +77,6 @@ centered = false
 [connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="Button Manager/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Button Manager/Lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="Button Manager/Lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="Button Manager/Lvl3" to="." method="_on_lvl_3_pressed"]

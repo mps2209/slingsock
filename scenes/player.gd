@@ -25,6 +25,7 @@ var pause_sling_audio := 1.7
 @onready var level_2: AudioStreamPlayer2D = $Level2
 @onready var sticky_impact: AudioStreamPlayer2D = $StickyImpact
 @onready var level_3: AudioStreamPlayer2D = $Level3
+@onready var rain: AudioStreamPlayer2D = $rain
 
 var is_playing_impact_sound=false
 
@@ -50,6 +51,7 @@ func _ready() -> void:
 			level_2.play(0)
 		"level3":
 			level_3.play(0)
+			rain.play(0)
 func _physics_process(delta: float) -> void:
 	update_movement_state()
 
@@ -235,3 +237,7 @@ func _integrate_forces(body_state):
 
 func _on_level_3_finished() -> void:
 	level_3.play(0)
+
+
+func _on_rain_finished() -> void:
+	rain.play(0)
