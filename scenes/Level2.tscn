@@ -125,10 +125,12 @@ script = ExtResource("3_3aekd")
 
 [node name="YouDied" parent="Camera2D" unique_id=2061511816 instance=ExtResource("4_3aekd")]
 visible = false
+z_index = 6
 position = Vector2(0, 0)
 
 [node name="Sockcess" parent="Camera2D" unique_id=1863315230 instance=ExtResource("5_khw7m")]
 visible = false
+z_index = 6
 position = Vector2(-588, -366)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1886666360]

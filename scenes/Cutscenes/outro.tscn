@@ -74,7 +74,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_qwgo1"]
 resource_name = "beam"
-length = 15.0
+length = 17.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -165,3 +165,5 @@ scale = Vector2(5.480006, 4.8785415)
 texture = ExtResource("3_4iqyj")
 region_enabled = true
 region_rect = Rect2(7, 0, 22, 32)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
